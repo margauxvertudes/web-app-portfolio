@@ -44,7 +44,7 @@ export default function App() {
     return (
         <div className={`app ${theme}`}>
             <nav className="navbar">
-                <div className="logo">&lt;DevPortfolio /&gt;</div> {/* SHOULD WRAP IT IN TEXT TAG */}
+                <div className="logo"><p>&lt;DevPortfolio /&gt;</p></div>
 
                 <div className="nav-links">
                     <a href="#about">About</a>
@@ -65,7 +65,7 @@ export default function App() {
                     <p>I specialize in crafting clean user interfaces, modular architecture, and interactive web experiences using modern JavaScript and React.</p>
 
                     <div className="hero-cta">
-                        <a href="#projects" className="btn btn-primary">View Projects</a> {/* THIS SHOULD BE A BUTTON */}
+                        <a href="#projects" className="btn btn-primary">View Projects</a>
                         <a href="#contact" className="btn btn-secondary">Get In Touch</a>
                     </div>
                 </div>
@@ -118,7 +118,7 @@ export default function App() {
 
                 <div className="contact-card">
                     <p>Interested in collaborating or discussing web development opportunities?</p>
-                    <a href="mailto:your.email@example.com" className="btn btn-primary">Send an Email</a> {/* THIS SHOULD BE A BUTTON */}
+                    <a href="mailto:francis.cortez@cvsu.edu.ph" className="btn btn-primary">Send an Email</a>
                 </div>
             </section>
 
