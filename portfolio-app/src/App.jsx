@@ -4,34 +4,34 @@ import "./index.css";
 const PROJECTS = [
     {
         id: 1,
-        title: "Interactive Web Calculator",
-        description: "Feature-rich calculator with keyboard support, persistent user themes, and custom audio feedback.",
-        tags: ["JavaScript", "Sass", "LocalStorage", "HTML5"],
+        title: "RetroCalc – Retro Themed Web Calculator",
+        description: "Retro-themed web calculator with keyboard support, persistent user themes, and custom audio feedback.",
+        tags: ["JavaScript", "CSS / Sass", "LocalStorage", "Caching", "Web API", "HTML"],
         demoUrl: "#",
         githubUrl: "#"
     },
     {
         id: 2,
-        title: "Productivity & Task App",
-        description: "Dynamic web application featuring state management, filtering, and responsive UI components.",
-        tags: ["React", "CSS3", "REST API"],
+        title: "LovKey – Quiz-Locked Digital Love Letter App",
+        description: "Digital love letter app featuring custom riddle-locked access, photo attachments, and shareable links.",
+        tags: ["JavaScript", "CSS / Sass", "URL Parameter", "Cloud Image Hosting", "Web API", "HTML"],
         demoUrl: "#",
         githubUrl: "#"
     },
     {
         id: 3,
-        title: "Weather & Metrics Dashboard",
-        description: "Real-time dashboard utilizing asynchronous data fetching and modern component architecture.",
-        tags: ["JavaScript", "Async/Await", "CSS Grid"],
+        title: "DevPortfolio – My Personal Web App Portfolio",
+        description: "Responsive web app portfolio showcasing personal projects, technical skills, and interactive contact features.",
+        tags: ["React", "JavaScript", "Vite", "Tailwind CSS", "CSS", "HTML"],
         demoUrl: "#",
         githubUrl: "#"
     }
 ];
 
 const SKILLS = {
-    Languages: ["JavaScript (ES6+)", "HTML5", "CSS3 / Sass"],
-    Concepts: ["State Management", "Async/Await", "DOM Manipulation", "Responsive Design"],
-    Tools: ["Git / GitHub", "VS Code", "Chrome DevTools", "Responsively App"]
+    Languages: ["React", "JavaScript (ES6+)", "Tailwind CSS", "Sass", "CSS3", "HTML5", "PostgreSQL", "MySQL"],
+    Concepts: ["State Management", "Async/Await", "DOM Manipulation", "Event Delegation", "DOM Caching", "LocalStorage", "Cloud Media Hosting", "Progressive Web Apps (PWA)", "Offline Caching", "Responsive Design", "Web Accessibility (a11y)", "SEO Optimization", "Performance Optimization"],
+    Tools: ["ChatGPT", "Gemini", "Git / GitHub", "VS Code", "Chrome DevTools", "Responsively App"]
 };
 
 export default function App() {
@@ -123,7 +123,7 @@ export default function App() {
             </section>
 
             <footer className="text-center p-8 text-(--text-muted) text-[0.85rem] border-t border-(--surface-border)">
-                <p>&copy; {new Date().getFullYear()} Francis Dale P. Cortez. Built with React & CSS.</p>
+                <p>&copy; {new Date().getFullYear()} Francis Dale P. Cortez. Built with React & Tailwind CSS.</p>
             </footer>
         </div>
     );
