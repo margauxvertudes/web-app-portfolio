@@ -1,6 +1,17 @@
 import { useState } from "react";
 import "./index.css";
 
+const NAVIGATIONS = ["About", "Projects", "Skills", "Contact"];
+
+const ABOUT = {
+    profilePicture: "./public/profile-picture-1.png",
+    position: "Frontend Developer",
+    username: "Cha",
+    name: "Margaux Ayezzalyne L. Vertudes",
+    get title() { return `Hi, I'm ${this.username} — I build🔨 fast, responsive, and scalable web applications.`; },
+    description: "I specialize in building easy-to-use interfaces, clean component architectures, and responsive web applications using React, Tailwind CSS, and Sass. My focus is on writing clean, maintainable code, keeping performance fast, and delivering smooth digital experiences from design to deployment."
+};
+
 const PROJECTS = [
     {
         id: 1,
@@ -44,13 +55,12 @@ export default function App() {
     return (
         <div className={`app ${theme} bg-(--bg) text-(--text-main) min-h-screen transition-colors duration-300`}>
             <nav className="flex justify-between items-center py-5 px-8 border-b border-(--surface-border) sticky top-0 bg-(--bg)">
-                <div className="font-bold text-xl text-(--accent)"><p>&lt;DevPortfolio /&gt;</p></div>
+                <div className="font-bold text-xl text-(--accent) max-[640px]:text-lg max-[525px]:text-sm"><p>&lt;DevPortfolio /&gt;</p></div>
 
                 <div className="flex gap-6 items-center max-[640px]:gap-[0.8rem] max-[640px]:text-[0.85rem]">
-                    <a href="#about" className="text-(--text-muted) text-[0.95rem] transition-colors duration-200 hover:text-(--text-main)">About</a>
-                    <a href="#projects" className="text-(--text-muted) text-[0.95rem] transition-colors duration-200 hover:text-(--text-main)">Projects</a>
-                    <a href="#skills" className="text-(--text-muted) text-[0.95rem] transition-colors duration-200 hover:text-(--text-main)">Skills</a>
-                    <a href="#contact" className="text-(--text-muted) text-[0.95rem] transition-colors duration-200 hover:text-(--text-main)">Contact</a>
+                    {NAVIGATIONS.map((nav) => (
+                        <a href={`#${nav.toLowerCase()}`} className="text-(--text-muted) text-[0.95rem] transition-colors duration-200 hover:text-(--text-main)" key={nav}>{nav}</a>
+                    ))}
 
                     <button className="bg-transparent border border-(--surface-border) text-(--text-main) py-[0.4rem] px-[0.8rem] rounded-md cursor-pointer" onClick={toggleTheme}>
                         {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
@@ -58,15 +68,22 @@ export default function App() {
                 </div>
             </nav>
 
-            <header className="max-w-200 mx-auto pt-24 px-8 pb-16 max-[640px]:text-[1.8rem]" id="about">
+            <header className="max-w-220 mx-auto pt-24 px-8 pb-16 max-[640px]:text-[1.8rem]" id="about">
                 <div>
-                    <span className="bg-(--surface) text-(--accent) border border-(--surface-border) py-[0.3rem] px-[0.8rem] rounded-[20px] text-[0.85rem] inline-block mb-4">Frontend Developer</span>
-                    <h1 className="text-[2.5rem] leading-[1.2] mb-4">Building responsive, high-performance web applications.</h1>
-                    <p className="text-(--text-muted) text-[1.15rem]/[1.6] mb-8">I specialize in crafting clean user interfaces, modular architecture, and interactive web experiences using modern JavaScript and React.</p>
+                    <div className="flex gap-7 mb-6 max-[640px]:flex-col max-[640px]:items-center">
+                        <img src={ABOUT.profilePicture} alt="Developer's Profile Picture" className="w-50 h-50 rounded-full border border-(--accent) max-[640px]:w-65 max-[640px]:h-65"/>
+                        <div className="flex flex-col gap-4 justify-center items-start">
+                            <span className="bg-(--surface) text-(--accent) border border-(--surface-border) py-[0.3rem] px-[0.8rem] rounded-[20px] text-[0.85rem]">{ABOUT.position}</span>
+                            <h1 className="text-[2.5rem] leading-[1.2]">{ABOUT.title}</h1>
+                        </div>
+                    </div>
 
-                    <div className="flex gap-4">
-                        <a href="#projects" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-[#ffffff] hover:bg-(--accent-hover)">View Projects</a>
-                        <a href="#contact" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--surface) text-(--text-main) border border-(--surface-border)">Get In Touch</a>
+                    <div className="flex flex-col gap-8">
+                        <p className="text-(--text-muted) text-[1.15rem]/[1.6]">{ABOUT.description}</p>
+                        <div className="flex gap-4">
+                            <a href="#projects" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-[#ffffff] hover:bg-(--accent-hover)">View Projects</a>
+                            <a href="#contact" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--surface) text-(--text-main) border border-(--surface-border)">Get In Touch</a>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -123,7 +140,7 @@ export default function App() {
             </section>
 
             <footer className="text-center p-8 text-(--text-muted) text-[0.85rem] border-t border-(--surface-border)">
-                <p>&copy; {new Date().getFullYear()} Francis Dale P. Cortez. Built with React & Tailwind CSS.</p>
+                <p>&copy; {new Date().getFullYear()} {ABOUT.name}. Built with React & Tailwind CSS.</p>
             </footer>
         </div>
     );
