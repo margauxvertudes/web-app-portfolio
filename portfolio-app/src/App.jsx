@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./index.css";
 
 const NAVIGATIONS = ["About", "Projects", "Skills", "Contact"];
 
 const ABOUT = {
-    profilePicture: "./public/profile-picture-1.png",
+    profilePicture: "../public/profile-picture-1.png",
     position: "Frontend Developer",
     username: "Cha",
     name: "Margaux Ayezzalyne L. Vertudes",
+    email: "vertudesmargaux2003@gmail.com",
+    resume: "Resume_Vertudes.pdf",
     get title() { return `Hi, I'm ${this.username} — I build🔨 fast, responsive, and scalable web applications.`; },
     description: "I specialize in building easy-to-use interfaces, clean component architectures, and responsive web applications using React, Tailwind CSS, and Sass. My focus is on writing clean, maintainable code, keeping performance fast, and delivering smooth digital experiences from design to deployment."
 };
@@ -46,7 +48,12 @@ const SKILLS = {
 };
 
 export default function App() {
-    const [theme, setTheme] = useState("dark");
+    const savedTheme = localStorage.getItem("savedTheme");
+    const [theme, setTheme] = useState(savedTheme || "dark");
+
+    useEffect(() => {
+        localStorage.setItem("savedTheme", theme);
+    }, [theme]);
 
     function toggleTheme() {
         setTheme((prev) => (prev === "dark" ? "light" : "dark"));
@@ -55,7 +62,7 @@ export default function App() {
     return (
         <div className={`app ${theme} bg-(--bg) text-(--text-main) min-h-screen transition-colors duration-300`}>
             <nav className="flex justify-between items-center py-5 px-8 border-b border-(--surface-border) sticky top-0 bg-(--bg)">
-                <div className="font-bold text-xl text-(--accent) max-[640px]:text-lg max-[525px]:text-sm"><p>&lt;DevPortfolio /&gt;</p></div>
+                <div className="font-bold text-xl text-(--accent) max-[640px]:text-lg max-[525px]:text-sm"><p><a href="./App.jsx">&lt;DevPortfolio /&gt;</a></p></div>
 
                 <div className="flex gap-6 items-center max-[640px]:gap-[0.8rem] max-[640px]:text-[0.85rem]">
                     {NAVIGATIONS.map((nav) => (
@@ -80,9 +87,13 @@ export default function App() {
 
                     <div className="flex flex-col gap-8">
                         <p className="text-(--text-muted) text-[1.15rem]/[1.6]">{ABOUT.description}</p>
-                        <div className="flex gap-4">
-                            <a href="#projects" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-[#ffffff] hover:bg-(--accent-hover)">View Projects</a>
-                            <a href="#contact" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--surface) text-(--text-main) border border-(--surface-border)">Get In Touch</a>
+                        <div className="flex justify-between items-center">
+                            <div className="flex gap-4">
+                                <a href="#projects" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-[#ffffff] hover:bg-(--accent-hover)">View Projects</a>
+                                <a href="#contact" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--surface) text-(--text-main) border border-(--surface-border)">Get In Touch</a>
+                            </div>
+
+                            <a href={`../public/${ABOUT.resume}`} download={ABOUT.resume} className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--surface) text-(--text-main) border border-(--surface-border)">Download Resume <i className="fa-solid fa-file-arrow-down"></i></a>
                         </div>
                     </div>
                 </div>
@@ -135,7 +146,7 @@ export default function App() {
 
                 <div className="bg-(--surface) border border-(--surface-border) p-12 rounded-xl text-center">
                     <p className="text-(--text-muted) mb-6">Interested in collaborating or discussing web development opportunities?</p>
-                    <a href="mailto:francis.cortez@cvsu.edu.ph" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-[#ffffff] hover:bg-(--accent-hover)">Send an Email</a>
+                    <a href={`mailto:${ABOUT.email}`} className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-[#ffffff] hover:bg-(--accent-hover)">Send an Email</a>
                 </div>
             </section>
 
