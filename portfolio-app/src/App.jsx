@@ -50,6 +50,7 @@ const SKILLS = {
 export default function App() {
     const savedTheme = localStorage.getItem("savedTheme");
     const [theme, setTheme] = useState(savedTheme || "dark");
+    const [activeCategory, setActiveCategory] = useState(null);
 
     useEffect(() => {
         localStorage.setItem("savedTheme", theme);
@@ -75,7 +76,7 @@ export default function App() {
                 </div>
             </nav>
 
-            <header className="max-w-220 mx-auto pt-24 px-8 pb-16 max-[640px]:text-[1.8rem]" id="about">
+            <header className="max-w-220 mx-auto pt-24 px-8 pb-16 max-[525px]:text-[0.8rem]" id="about">
                 <div>
                     <div className="flex gap-7 mb-6 max-[640px]:flex-col max-[640px]:items-center">
                         <img src={ABOUT.profilePicture} alt="Developer's Profile Picture" className="w-50 h-50 rounded-full border border-(--accent) max-[640px]:w-65 max-[640px]:h-65"/>
@@ -87,7 +88,7 @@ export default function App() {
 
                     <div className="flex flex-col gap-8">
                         <p className="text-(--text-muted) text-[1.15rem]/[1.6]">{ABOUT.description}</p>
-                        <div className="flex justify-between items-center">
+                        <div className="flex justify-between items-center gap-4">
                             <div className="flex gap-4">
                                 <a href="#projects" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-[#ffffff] hover:bg-(--accent-hover)">View Projects</a>
                                 <a href="#contact" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--surface) text-(--text-main) border border-(--surface-border)">Get In Touch</a>
@@ -132,13 +133,34 @@ export default function App() {
                             <h3 className="text-(--accent) text-[1.1rem] mb-4">{category}</h3>
 
                             <ul className="list-none">
-                                {items.map((item) => (
+                                {items.slice(0, 5).map((item) => (
                                     <li key={item} className="text-(--text-muted) text-[0.95rem] mb-2">{item}</li>
                                 ))}
                             </ul>
+
+                            <a href="#skills" className="text-(--accent) text-[0.9rem] font-semibold inline-block mt-3" onClick={() => setActiveCategory(category)}>Show More &rarr;</a>
                         </div>
                     ))}
                 </div>
+
+                {activeCategory && (
+                    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-7" onClick={() => setActiveCategory(null)}>
+                        <div className="bg-(--surface) border border-(--surface-border) rounded-xl p-6 w-full max-w-lg max-h-[80vh] flex flex-col shadow-2xl" onClick={(e) => e.stopPropagation()}>
+                            <div className="flex items-center justify-between mb-6">
+                                <h2 className="text-(--accent) text-xl font-bold">{activeCategory}</h2>
+                                <button onClick={() => setActiveCategory(null)} className="text-(--text-muted) hover:text-white text-xl font-bold cursor-pointer mr-2">&times;</button>
+                            </div>
+
+                            <div className="overflow-y-auto flex-1 pr-2">
+                                <ul className="list-none">
+                                    {SKILLS[activeCategory].map((item) => (
+                                        <li key={item} className="text-(--text-muted) text-base py-2">{item}</li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="contact">
