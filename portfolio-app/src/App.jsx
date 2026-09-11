@@ -57,61 +57,61 @@ export default function App() {
     }, [theme]);
 
     function toggleTheme() {
-        setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+        setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
     }
 
     return (
-        <div className={`app ${theme} bg-(--bg) text-(--text-main) min-h-screen transition-colors duration-300`}>
-            <nav className="flex justify-between items-center py-5 px-8 border-b border-(--surface-border) sticky top-0 bg-(--bg)">
+        <div className={`app ${theme} bg-(--bg-color) text-(--txt-main-color) min-h-screen transition-colors duration-300`}>
+            <nav className="flex justify-between items-center py-5 px-8 border-b border-(--cntnr-border-color) sticky top-0 bg-(--bg-color)">
                 <div className="font-bold text-xl text-(--accent) max-[640px]:text-lg max-[525px]:text-sm"><p><a href="./App.jsx">&lt;DevPortfolio /&gt;</a></p></div>
 
                 <div className="flex gap-6 items-center max-[640px]:gap-[0.8rem] max-[640px]:text-[0.85rem]">
                     {NAVIGATIONS.map((nav) => (
-                        <a href={`#${nav.toLowerCase()}`} className="text-(--text-muted) text-[0.95rem] transition-colors duration-200 hover:text-(--text-main)" key={nav}>{nav}</a>
+                        <a href={`#${nav.toLowerCase()}`} key={nav} className="text-(--txt-muted-color) text-[0.95rem] transition-colors duration-200 hover:text-(--txt-main-color)">{nav}</a>
                     ))}
 
-                    <button className="bg-transparent border border-(--surface-border) text-(--text-main) py-[0.4rem] px-[0.8rem] rounded-md cursor-pointer" onClick={toggleTheme}>
+                    <button onClick={toggleTheme} className="bg-transparent border border-(--cntnr-border-color) text-(--txt-main-color) py-[0.4rem] px-[0.8rem] rounded-md cursor-pointer">
                         {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
                     </button>
                 </div>
             </nav>
 
             <header className="max-w-220 mx-auto pt-24 px-8 pb-16 max-[525px]:text-[0.8rem]" id="about">
-                <div>
+                <div className="flex flex-col">
                     <div className="flex gap-7 mb-6 max-[640px]:flex-col max-[640px]:items-center">
                         <img src={ABOUT.profilePicture} alt="Developer's Profile Picture" className="w-50 h-50 rounded-full border border-(--accent) max-[640px]:w-65 max-[640px]:h-65"/>
                         <div className="flex flex-col gap-4 justify-center items-start">
-                            <span className="bg-(--surface) text-(--accent) border border-(--surface-border) py-[0.3rem] px-[0.8rem] rounded-[20px] text-[0.85rem]">{ABOUT.position}</span>
+                            <span className="bg-(--cntnr-color) text-(--accent) border border-(--cntnr-border-color) py-[0.3rem] px-[0.8rem] rounded-[20px] text-[0.85rem]">{ABOUT.position}</span>
                             <h1 className="text-[2.5rem] leading-[1.2]">{ABOUT.title}</h1>
                         </div>
                     </div>
 
                     <div className="flex flex-col gap-8">
-                        <p className="text-(--text-muted) text-[1.15rem]/[1.6]">{ABOUT.description}</p>
+                        <p className="text-(--txt-muted-color) text-[1.15rem]/[1.6]">{ABOUT.description}</p>
                         <div className="flex justify-between items-center gap-4">
                             <div className="flex gap-4">
-                                <a href="#projects" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-[#ffffff] hover:bg-(--accent-hover)">View Projects</a>
-                                <a href="#contact" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--surface) text-(--text-main) border border-(--surface-border)">Get In Touch</a>
+                                <a href="#projects" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-(--cntnr-color) hover:bg-(--accent-hover)">View Projects</a>
+                                <a href="#contact" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--cntnr-color) text-(--txt-main-color) border border-(--cntnr-border-color)">Get In Touch</a>
                             </div>
 
-                            <a href={`../public/${ABOUT.resume}`} download={ABOUT.resume} className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--surface) text-(--text-main) border border-(--surface-border)">Download Resume <i className="fa-solid fa-file-arrow-down"></i></a>
+                            <a href={`../public/${ABOUT.resume}`} download={ABOUT.resume} className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--cntnr-color) text-(--txt-main-color) border border-(--cntnr-border-color)">Download Resume <i className="fa-solid fa-file-arrow-down"></i></a>
                         </div>
                     </div>
                 </div>
             </header>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="projects">
-                <h2 className="text-2xl mb-8 border-b-2 border-(--surface-border) pb-2">Featured Projects</h2>
+                <h2 className="text-2xl mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Featured Projects</h2>
 
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
                     {PROJECTS.map((project) => (
-                        <div key={project.id} className="bg-(--surface) border border-(--surface-border) p-6 rounded-xl flex flex-col">
+                        <div key={project.id} className="bg-(--cntnr-color) border border-(--cntnr-border-color) p-6 rounded-xl flex flex-col">
                             <h3 className="mb-2">{project.title}</h3>
-                            <p className="text-(--text-muted) text-[0.95rem]/[1.5] mb-5 grow">{project.description}</p>
+                            <p className="text-(--txt-muted-color) text-[0.95rem]/[1.5] mb-5 grow">{project.description}</p>
 
                             <div className="flex flex-wrap gap-2 mb-5">
                                 {project.tags.map((tag) => (
-                                    <span key={tag} className="bg-(--bg) border border-(--surface-border) text-xs py-[0.2rem] px-[0.6rem] rounded">{tag}</span>
+                                    <span key={tag} className="bg-(--bg-color) border border-(--cntnr-border-color) text-xs py-[0.2rem] px-[0.6rem] rounded">{tag}</span>
                                 ))}
                             </div>
 
@@ -125,36 +125,36 @@ export default function App() {
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="skills">
-                <h2 className="text-2xl mb-8 border-b-2 border-(--surface-border) pb-2">Technical Skills</h2>
+                <h2 className="text-2xl mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Technical Skills</h2>
 
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
                     {Object.entries(SKILLS).map(([category, items]) => (
-                        <div key={category} className="bg-(--surface) border border-(--surface-border) p-6 rounded-xl">
+                        <div key={category} className="bg-(--cntnr-color) border border-(--cntnr-border-color) p-6 rounded-xl">
                             <h3 className="text-(--accent) text-[1.1rem] mb-4">{category}</h3>
 
                             <ul className="list-none">
                                 {items.slice(0, 5).map((item) => (
-                                    <li key={item} className="text-(--text-muted) text-[0.95rem] mb-2">{item}</li>
+                                    <li key={item} className="text-(--txt-muted-color) text-[0.95rem] mb-2">{item}</li>
                                 ))}
                             </ul>
 
-                            <a href="#skills" className="text-(--accent) text-[0.9rem] font-semibold inline-block mt-3" onClick={() => setActiveCategory(category)}>Show More &rarr;</a>
+                            <a href="#skills" onClick={() => setActiveCategory(category)} className="text-(--accent) text-[0.9rem] font-semibold inline-block mt-3">Show More &rarr;</a>
                         </div>
                     ))}
                 </div>
 
                 {activeCategory && (
-                    <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-7" onClick={() => setActiveCategory(null)}>
-                        <div className="bg-(--surface) border border-(--surface-border) rounded-xl p-6 w-full max-w-lg max-h-[80vh] flex flex-col shadow-2xl" onClick={(e) => e.stopPropagation()}>
+                    <div onClick={() => setActiveCategory(null)} className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-7">
+                        <div onClick={(e) => e.stopPropagation()} className="bg-(--cntnr-color) border border-(--cntnr-border-color) rounded-xl p-6 w-full max-w-lg max-h-[80vh] flex flex-col shadow-2xl">
                             <div className="flex items-center justify-between mb-6">
                                 <h2 className="text-(--accent) text-xl font-bold">{activeCategory}</h2>
-                                <button onClick={() => setActiveCategory(null)} className="text-(--text-muted) hover:text-white text-xl font-bold cursor-pointer mr-2">&times;</button>
+                                <button onClick={() => setActiveCategory(null)} className="text-(--txt-muted-color) hover:text-white text-xl font-bold cursor-pointer mr-2">&times;</button>
                             </div>
 
                             <div className="overflow-y-auto flex-1 pr-2">
                                 <ul className="list-none">
                                     {SKILLS[activeCategory].map((item) => (
-                                        <li key={item} className="text-(--text-muted) text-base py-2">{item}</li>
+                                        <li key={item} className="text-(--txt-muted-color) text-base py-2">{item}</li>
                                     ))}
                                 </ul>
                             </div>
@@ -164,15 +164,15 @@ export default function App() {
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="contact">
-                <h2 className="text-2xl mb-8 border-b-2 border-(--surface-border) pb-2">Get In Touch</h2>
+                <h2 className="text-2xl mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Get In Touch</h2>
 
-                <div className="bg-(--surface) border border-(--surface-border) p-12 rounded-xl text-center">
-                    <p className="text-(--text-muted) mb-6">Interested in collaborating or discussing web development opportunities?</p>
-                    <a href={`mailto:${ABOUT.email}`} className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-[#ffffff] hover:bg-(--accent-hover)">Send an Email</a>
+                <div className="bg-(--cntnr-color) border border-(--cntnr-border-color) p-12 rounded-xl text-center">
+                    <p className="text-(--txt-muted-color) mb-6">Interested in collaborating or discussing web development opportunities?</p>
+                    <a href={`mailto:${ABOUT.email}`} className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-(--cntnr-color) hover:bg-(--accent-hover)">Send an Email</a>
                 </div>
             </section>
 
-            <footer className="text-center p-8 text-(--text-muted) text-[0.85rem] border-t border-(--surface-border)">
+            <footer className="text-center p-8 text-(--txt-muted-color) text-[0.85rem] border-t border-(--cntnr-border-color)">
                 <p>&copy; {new Date().getFullYear()} {ABOUT.name}. Built with React & Tailwind CSS.</p>
             </footer>
         </div>
