@@ -4,7 +4,7 @@ import "./index.css";
 const NAVIGATIONS = ["About", "Projects", "Skills", "Contact"];
 
 const ABOUT = {
-    profilePicture: "../public/profile-picture-1.png",
+    profilePicture: "../public/profilePics/profile-picture-1.png",
     position: "Frontend Developer",
     username: "Cha",
     name: "Margaux Ayezzalyne L. Vertudes",
@@ -47,10 +47,18 @@ const SKILLS = {
     Tools: ["ChatGPT", "Gemini", "Git / GitHub", "VS Code", "Chrome DevTools", "Responsively App"]
 };
 
+const CERTIFICATES = [
+    "../public/certificates/certificate-1.jpg",
+    "../public/certificates/certificate-2.jpg",
+    "../public/certificates/certificate-3.jpg",
+    "../public/certificates/certificate-4.jpg",
+];
+
 export default function App() {
     const savedTheme = localStorage.getItem("savedTheme");
     const [theme, setTheme] = useState(savedTheme || "dark");
     const [activeCategory, setActiveCategory] = useState(null);
+    const [currCert, setCurrCert] = useState(0);
 
     useEffect(() => {
         localStorage.setItem("savedTheme", theme);
@@ -58,6 +66,14 @@ export default function App() {
 
     function toggleTheme() {
         setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
+    }
+
+    function arrowLeftCert() {
+        if (currCert > 0) setCurrCert((prevCert) => prevCert - 1);
+    }
+
+    function arrowRightCert() {
+        if (currCert < CERTIFICATES.length - 1) setCurrCert((prevCert) => prevCert + 1);
     }
 
     return (
@@ -79,7 +95,7 @@ export default function App() {
             <header className="max-w-220 mx-auto pt-24 px-8 pb-16 max-[525px]:text-[0.8rem]" id="about">
                 <div className="flex flex-col">
                     <div className="flex gap-7 mb-6 max-[640px]:flex-col max-[640px]:items-center">
-                        <img src={ABOUT.profilePicture} alt="Developer's Profile Picture" className="w-50 h-50 rounded-full border border-(--accent) max-[640px]:w-65 max-[640px]:h-65"/>
+                        <img src={ABOUT.profilePicture} alt="Developer's Profile Picture" className="w-50 h-50 rounded-full border border-(--accent) max-[640px]:w-65 max-[640px]:h-65" />
                         <div className="flex flex-col gap-4 justify-center items-start">
                             <span className="bg-(--cntnr-color) text-(--accent) border border-(--cntnr-border-color) py-[0.3rem] px-[0.8rem] rounded-[20px] text-[0.85rem]">{ABOUT.position}</span>
                             <h1 className="text-[2.5rem] leading-[1.2]">{ABOUT.title}</h1>
@@ -101,7 +117,7 @@ export default function App() {
             </header>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="projects">
-                <h2 className="text-2xl mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Featured Projects</h2>
+                <h2 className="text-2xl mb-6 md:mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Featured Projects</h2>
 
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
                     {PROJECTS.map((project) => (
@@ -125,7 +141,7 @@ export default function App() {
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="skills">
-                <h2 className="text-2xl mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Technical Skills</h2>
+                <h2 className="text-2xl mb-6 md:mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Technical Skills</h2>
 
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
                     {Object.entries(SKILLS).map(([category, items]) => (
@@ -163,8 +179,26 @@ export default function App() {
                 )}
             </section>
 
+            <section className="max-w-250 mx-auto py-16 px-8" id="certificates">
+                <h2 className="text-2xl mb-6 md:mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Certifications</h2>
+
+                <div className="flex items-center justify-center gap-2 sm:gap-4">
+                    <button onClick={arrowLeftCert} className="flex items-center justify-center p-3 rounded-lg text-(--txt-muted-color) hover:text-(--accent) transition-colors shrink-0">
+                        <i className="fa-solid fa-chevron-left text-lg"></i>
+                    </button>
+
+                    <div className="w-full max-w-3xl aspect-4/3 sm:aspect-16/10 flex items-center justify-center overflow-hidden">
+                        <img src={CERTIFICATES[currCert]} alt="Developer's Certificate" className="max-w-full max-h-full w-auto h-auto object-contain" />
+                    </div>
+
+                    <button onClick={arrowRightCert} className="flex items-center justify-center p-3 rounded-lg text-(--txt-muted-color) hover:text-(--accent) transition-colors shrink-0">
+                        <i className="fa-solid fa-chevron-right text-lg"></i>
+                    </button>
+                </div>
+            </section>
+
             <section className="max-w-250 mx-auto py-16 px-8" id="contact">
-                <h2 className="text-2xl mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Get In Touch</h2>
+                <h2 className="text-2xl mb-6 md:mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Get In Touch</h2>
 
                 <div className="bg-(--cntnr-color) border border-(--cntnr-border-color) p-12 rounded-xl text-center">
                     <p className="text-(--txt-muted-color) mb-6">Interested in collaborating or discussing web development opportunities?</p>
