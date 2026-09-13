@@ -4,7 +4,7 @@ import "./index.css";
 const NAVIGATIONS = ["About", "Projects", "Skills", "Contact"];
 
 const ABOUT = {
-    profilePicture: "../public/profilePics/profile-picture-1.png",
+    profilePicture: "/profilePics/profile-picture-1.png",
     position: "Frontend Developer",
     username: "Cha",
     name: "Margaux Ayezzalyne L. Vertudes",
@@ -48,10 +48,10 @@ const SKILLS = {
 };
 
 const CERTIFICATES = [
-    "../public/certificates/certificate-1.jpg",
-    "../public/certificates/certificate-2.jpg",
-    "../public/certificates/certificate-3.jpg",
-    "../public/certificates/certificate-4.jpg",
+    "/certificates/certificate-1.jpg",
+    "/certificates/certificate-2.jpg",
+    "/certificates/certificate-3.jpg",
+    "/certificates/certificate-4.jpg",
 ];
 
 export default function App() {
@@ -110,7 +110,7 @@ export default function App() {
                                 <a href="#contact" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--cntnr-color) text-(--txt-main-color) border border-(--cntnr-border-color)">Get In Touch</a>
                             </div>
 
-                            <a href={`../public/${ABOUT.resume}`} download={ABOUT.resume} className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--cntnr-color) text-(--txt-main-color) border border-(--cntnr-border-color)">Download Resume <i className="fa-solid fa-file-arrow-down"></i></a>
+                            <a href={`/${ABOUT.resume}`} download={ABOUT.resume} className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--cntnr-color) text-(--txt-main-color) border border-(--cntnr-border-color)">Download Resume <i className="fa-solid fa-file-arrow-down"></i></a>
                         </div>
                     </div>
                 </div>
