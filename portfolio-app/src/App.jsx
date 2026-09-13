@@ -79,9 +79,9 @@ export default function App() {
     return (
         <div className={`app ${theme} bg-(--bg-color) text-(--txt-main-color) min-h-screen transition-colors duration-300`}>
             <nav className="flex justify-between items-center py-5 px-8 border-b border-(--cntnr-border-color) sticky top-0 bg-(--bg-color)">
-                <div className="font-bold text-xl text-(--accent) max-[640px]:text-lg max-[525px]:text-sm"><p><a href="./App.jsx">&lt;DevPortfolio /&gt;</a></p></div>
+                <div className="font-bold text-sm min-[525px]:text-lg sm:text-xl text-(--accent)"><p><a href="./App.jsx">&lt;DevPortfolio /&gt;</a></p></div>
 
-                <div className="flex gap-6 items-center max-[640px]:gap-[0.8rem] max-[640px]:text-[0.85rem]">
+                <div className="flex items-center gap-[0.8rem] sm:gap-6 text-[0.85rem] sm:text-[1rem]">
                     {NAVIGATIONS.map((nav) => (
                         <a href={`#${nav.toLowerCase()}`} key={nav} className="text-(--txt-muted-color) text-[0.95rem] transition-colors duration-200 hover:text-(--txt-main-color)">{nav}</a>
                     ))}
@@ -92,10 +92,10 @@ export default function App() {
                 </div>
             </nav>
 
-            <header className="max-w-220 mx-auto pt-24 px-8 pb-16 max-[525px]:text-[0.8rem]" id="about">
+            <header className="max-w-220 mx-auto pt-24 px-8 pb-16 text-[0.8rem] min-[525px]:text-[1rem]" id="about">
                 <div className="flex flex-col">
-                    <div className="flex gap-7 mb-6 max-[640px]:flex-col max-[640px]:items-center">
-                        <img src={ABOUT.profilePicture} alt="Developer's Profile Picture" className="w-50 h-50 rounded-full border border-(--accent) max-[640px]:w-65 max-[640px]:h-65" />
+                    <div className="flex gap-7 mb-6 flex-col sm:flex-row items-center">
+                        <img src={ABOUT.profilePicture} alt="Developer's Profile Picture" className="w-60 h-60 rounded-full border border-(--accent) sm:w-50 sm:h-50" />
                         <div className="flex flex-col gap-4 justify-center items-start">
                             <span className="bg-(--cntnr-color) text-(--accent) border border-(--cntnr-border-color) py-[0.3rem] px-[0.8rem] rounded-[20px] text-[0.85rem]">{ABOUT.position}</span>
                             <h1 className="text-[2.5rem] leading-[1.2]">{ABOUT.title}</h1>
