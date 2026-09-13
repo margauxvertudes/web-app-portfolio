@@ -183,7 +183,7 @@ export default function App() {
                 <h2 className="text-2xl mb-6 md:mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Certifications</h2>
 
                 <div className="flex items-center justify-center gap-2 sm:gap-4">
-                    <button onClick={arrowLeftCert} className="flex items-center justify-center p-3 rounded-lg text-(--txt-muted-color) hover:text-(--accent) transition-colors shrink-0">
+                    <button onClick={arrowLeftCert} aria-label="Previous Certificate" className="flex items-center justify-center p-3 rounded-lg text-(--txt-muted-color) hover:text-(--accent) transition-colors shrink-0">
                         <i className="fa-solid fa-chevron-left text-lg"></i>
                     </button>
 
@@ -191,7 +191,7 @@ export default function App() {
                         <img src={CERTIFICATES[currCert]} alt="Developer's Certificate" className="max-w-full max-h-full w-auto h-auto object-contain" />
                     </div>
 
-                    <button onClick={arrowRightCert} className="flex items-center justify-center p-3 rounded-lg text-(--txt-muted-color) hover:text-(--accent) transition-colors shrink-0">
+                    <button onClick={arrowRightCert} aria-label="Next Certificate" className="flex items-center justify-center p-3 rounded-lg text-(--txt-muted-color) hover:text-(--accent) transition-colors shrink-0">
                         <i className="fa-solid fa-chevron-right text-lg"></i>
                     </button>
                 </div>
