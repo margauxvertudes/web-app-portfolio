@@ -78,15 +78,15 @@ export default function App() {
 
     return (
         <div className={`app ${theme} bg-(--bg-color) text-(--txt-main-color) min-h-screen transition-colors duration-300`}>
-            <nav className="flex justify-between items-center py-5 px-8 border-b border-(--cntnr-border-color) sticky top-0 bg-(--bg-color)">
-                <div className="font-bold text-sm min-[525px]:text-lg sm:text-xl text-(--accent)"><p><a href="./App.jsx">&lt;DevPortfolio /&gt;</a></p></div>
+            <nav className="bg-(--bg-color) py-5 px-8 border-b border-(--cntnr-border-color) flex justify-between items-center sticky top-0">
+                <div className="text-(--accent) font-bold text-sm min-[525px]:text-lg sm:text-xl"><p><a href="./App.jsx">&lt;DevPortfolio /&gt;</a></p></div>
 
-                <div className="flex items-center gap-[0.8rem] sm:gap-6 text-[0.85rem] sm:text-[1rem]">
+                <div className="text-[0.85rem] sm:text-[1rem] flex items-center gap-[0.8rem] sm:gap-6">
                     {NAVIGATIONS.map((nav) => (
                         <a href={`#${nav.toLowerCase()}`} key={nav} className="text-(--txt-muted-color) text-[0.95rem] transition-colors duration-200 hover:text-(--txt-main-color)">{nav}</a>
                     ))}
 
-                    <button onClick={toggleTheme} className="bg-transparent border border-(--cntnr-border-color) text-(--txt-main-color) py-[0.4rem] px-[0.8rem] rounded-md cursor-pointer">
+                    <button onClick={toggleTheme} className="bg-transparent text-(--txt-main-color) py-[0.4rem] px-[0.8rem] border border-(--cntnr-border-color) rounded-md cursor-pointer">
                         {theme === "dark" ? "☀️ Light" : "🌙 Dark"}
                     </button>
                 </div>
@@ -94,10 +94,10 @@ export default function App() {
 
             <header className="max-w-220 mx-auto pt-24 px-8 pb-16 text-[0.8rem] min-[525px]:text-[1rem]" id="about">
                 <div className="flex flex-col">
-                    <div className="flex gap-7 mb-6 flex-col sm:flex-row items-center">
-                        <img src={ABOUT.profilePicture} alt="Developer's Profile Picture" className="w-60 h-60 rounded-full border border-(--accent) sm:w-50 sm:h-50" />
-                        <div className="flex flex-col gap-4 justify-center items-start">
-                            <span className="bg-(--cntnr-color) text-(--accent) border border-(--cntnr-border-color) py-[0.3rem] px-[0.8rem] rounded-[20px] text-[0.85rem]">{ABOUT.position}</span>
+                    <div className="mb-6 flex items-center flex-col sm:flex-row gap-7">
+                        <img src={ABOUT.profilePicture} alt="Developer's Profile Picture" className="w-60 sm:w-50 h-60 sm:h-50 border border-(--accent) rounded-full" />
+                        <div className="flex justify-center items-start flex-col gap-4">
+                            <span className="bg-(--cntnr-color) text-(--accent) py-[0.3rem] px-[0.8rem] text-[0.85rem] border border-(--cntnr-border-color) rounded-[20px]">{ABOUT.position}</span>
                             <h1 className="text-[2.5rem] leading-[1.2]">{ABOUT.title}</h1>
                         </div>
                     </div>
@@ -106,28 +106,28 @@ export default function App() {
                         <p className="text-(--txt-muted-color) text-[1.15rem]/[1.6]">{ABOUT.description}</p>
                         <div className="flex justify-between items-center gap-4">
                             <div className="flex gap-4">
-                                <a href="#projects" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-(--cntnr-color) hover:bg-(--accent-hover)">View Projects</a>
-                                <a href="#contact" className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--cntnr-color) text-(--txt-main-color) border border-(--cntnr-border-color)">Get In Touch</a>
+                                <a href="#projects" className="bg-(--accent) text-(--cntnr-color) py-3 px-6 font-semibold rounded-lg inline-block transition-colors duration-200 hover:bg-(--accent-hover)">View Projects</a>
+                                <a href="#contact" className="bg-(--cntnr-color) text-(--txt-main-color) py-3 px-6 font-semibold border border-(--cntnr-border-color) rounded-lg inline-block transition-colors duration-200">Get In Touch</a>
                             </div>
 
-                            <a href={`/${ABOUT.resume}`} download={ABOUT.resume} className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--cntnr-color) text-(--txt-main-color) border border-(--cntnr-border-color)">Download Resume <i className="fa-solid fa-file-arrow-down"></i></a>
+                            <a href={`/${ABOUT.resume}`} download={ABOUT.resume} className="bg-(--cntnr-color) text-(--txt-main-color) py-3 px-6 font-semibold border border-(--cntnr-border-color) rounded-lg inline-block transition-colors duration-200">Download Resume <i className="fa-solid fa-file-arrow-down"></i></a>
                         </div>
                     </div>
                 </div>
             </header>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="projects">
-                <h2 className="text-2xl mb-6 md:mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Featured Projects</h2>
+                <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Featured Projects</h2>
 
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
                     {PROJECTS.map((project) => (
-                        <div key={project.id} className="bg-(--cntnr-color) border border-(--cntnr-border-color) p-6 rounded-xl flex flex-col">
+                        <div key={project.id} className="bg-(--cntnr-color) p-6 border border-(--cntnr-border-color) rounded-xl flex flex-col">
                             <h3 className="mb-2">{project.title}</h3>
-                            <p className="text-(--txt-muted-color) text-[0.95rem]/[1.5] mb-5 grow">{project.description}</p>
+                            <p className="text-(--txt-muted-color) mb-5 text-[0.95rem]/[1.5] grow">{project.description}</p>
 
-                            <div className="flex flex-wrap gap-2 mb-5">
+                            <div className="mb-5 flex flex-wrap gap-2">
                                 {project.tags.map((tag) => (
-                                    <span key={tag} className="bg-(--bg-color) border border-(--cntnr-border-color) text-xs py-[0.2rem] px-[0.6rem] rounded">{tag}</span>
+                                    <span key={tag} className="bg-(--bg-color) py-[0.2rem] px-[0.6rem] text-xs border border-(--cntnr-border-color) rounded">{tag}</span>
                                 ))}
                             </div>
 
@@ -141,36 +141,36 @@ export default function App() {
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="skills">
-                <h2 className="text-2xl mb-6 md:mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Technical Skills</h2>
+                <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Technical Skills</h2>
 
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
                     {Object.entries(SKILLS).map(([category, items]) => (
-                        <div key={category} className="bg-(--cntnr-color) border border-(--cntnr-border-color) p-6 rounded-xl">
-                            <h3 className="text-(--accent) text-[1.1rem] mb-4">{category}</h3>
+                        <div key={category} className="bg-(--cntnr-color) p-6 border border-(--cntnr-border-color) rounded-xl">
+                            <h3 className="text-(--accent) mb-4 text-[1.1rem]">{category}</h3>
 
                             <ul className="list-none">
                                 {items.slice(0, 5).map((item) => (
-                                    <li key={item} className="text-(--txt-muted-color) text-[0.95rem] mb-2">{item}</li>
+                                    <li key={item} className="text-(--txt-muted-color) mb-2 text-[0.95rem]">{item}</li>
                                 ))}
                             </ul>
 
-                            <a href="#skills" onClick={() => setActiveCategory(category)} className="text-(--accent) text-[0.9rem] font-semibold inline-block mt-3">Show More &rarr;</a>
+                            <a href="#skills" onClick={() => setActiveCategory(category)} className="text-(--accent) mt-3 text-[0.9rem] font-semibold inline-block">Show More &rarr;</a>
                         </div>
                     ))}
                 </div>
 
                 {activeCategory && (
-                    <div onClick={() => setActiveCategory(null)} className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center p-7">
-                        <div onClick={(e) => e.stopPropagation()} className="bg-(--cntnr-color) border border-(--cntnr-border-color) rounded-xl p-6 w-full max-w-lg max-h-[80vh] flex flex-col shadow-2xl">
-                            <div className="flex items-center justify-between mb-6">
+                    <div onClick={() => setActiveCategory(null)} className="bg-black/60 backdrop-blur-sm p-7 flex justify-center items-center fixed inset-0">
+                        <div onClick={(e) => e.stopPropagation()} className="bg-(--cntnr-color) w-full max-w-lg max-h-[80vh] p-6 border border-(--cntnr-border-color) rounded-xl flex flex-col shadow-2xl">
+                            <div className="flex mb-6 justify-between items-center">
                                 <h2 className="text-(--accent) text-xl font-bold">{activeCategory}</h2>
-                                <button onClick={() => setActiveCategory(null)} className="text-(--txt-muted-color) hover:text-white text-xl font-bold cursor-pointer mr-2">&times;</button>
+                                <button onClick={() => setActiveCategory(null)} className="text-(--txt-muted-color) mr-2 text-xl font-bold cursor-pointer hover:text-white">&times;</button>
                             </div>
 
-                            <div className="overflow-y-auto flex-1 pr-2">
+                            <div className="pr-2 overflow-y-auto flex-1">
                                 <ul className="list-none">
                                     {SKILLS[activeCategory].map((item) => (
-                                        <li key={item} className="text-(--txt-muted-color) text-base py-2">{item}</li>
+                                        <li key={item} className="text-(--txt-muted-color) py-2 text-base">{item}</li>
                                     ))}
                                 </ul>
                             </div>
@@ -180,33 +180,33 @@ export default function App() {
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="certificates">
-                <h2 className="text-2xl mb-6 md:mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Certifications</h2>
+                <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Certifications</h2>
 
-                <div className="flex items-center justify-center gap-2 sm:gap-4">
-                    <button onClick={arrowLeftCert} aria-label="Previous Certificate" className="flex items-center justify-center p-3 rounded-lg text-(--txt-muted-color) hover:text-(--accent) transition-colors shrink-0">
+                <div className="flex justify-center items-center gap-2 sm:gap-4">
+                    <button onClick={arrowLeftCert} aria-label="Previous Certificate" className="text-(--txt-muted-color) p-3 flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
                         <i className="fa-solid fa-chevron-left text-lg"></i>
                     </button>
 
-                    <div className="w-full max-w-3xl aspect-4/3 sm:aspect-16/10 flex items-center justify-center overflow-hidden">
+                    <div className="w-full max-w-3xl aspect-4/3 sm:aspect-16/10 flex justify-center items-center overflow-hidden">
                         <img src={CERTIFICATES[currCert]} alt="Developer's Certificate" className="max-w-full max-h-full w-auto h-auto object-contain" />
                     </div>
 
-                    <button onClick={arrowRightCert} aria-label="Next Certificate" className="flex items-center justify-center p-3 rounded-lg text-(--txt-muted-color) hover:text-(--accent) transition-colors shrink-0">
+                    <button onClick={arrowRightCert} aria-label="Next Certificate" className="text-(--txt-muted-color) p-3 flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
                         <i className="fa-solid fa-chevron-right text-lg"></i>
                     </button>
                 </div>
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="contact">
-                <h2 className="text-2xl mb-6 md:mb-8 border-b-2 border-(--cntnr-border-color) pb-2">Get In Touch</h2>
+                <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Get In Touch</h2>
 
-                <div className="bg-(--cntnr-color) border border-(--cntnr-border-color) p-12 rounded-xl text-center">
+                <div className="bg-(--cntnr-color) p-12 text-center border border-(--cntnr-border-color) rounded-xl">
                     <p className="text-(--txt-muted-color) mb-6">Interested in collaborating or discussing web development opportunities?</p>
-                    <a href={`mailto:${ABOUT.email}`} className="py-3 px-6 rounded-lg font-semibold inline-block transition-colors duration-200 bg-(--accent) text-(--cntnr-color) hover:bg-(--accent-hover)">Send an Email</a>
+                    <a href={`mailto:${ABOUT.email}`} className="bg-(--accent) text-(--cntnr-color) py-3 px-6 font-semibold rounded-lg inline-block transition-colors duration-200 hover:bg-(--accent-hover)">Send an Email</a>
                 </div>
             </section>
 
-            <footer className="text-center p-8 text-(--txt-muted-color) text-[0.85rem] border-t border-(--cntnr-border-color)">
+            <footer className="text-(--txt-muted-color) p-8 text-[0.85rem] text-center border-t border-(--cntnr-border-color)">
                 <p>&copy; {new Date().getFullYear()} {ABOUT.name}. Built with React & Tailwind CSS.</p>
             </footer>
         </div>
