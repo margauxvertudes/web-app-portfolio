@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./index.css";
 
 const NAVIGATIONS = ["About", "Projects", "Skills", "Contact"];
@@ -58,23 +58,32 @@ export default function App() {
     const savedTheme = localStorage.getItem("savedTheme");
     const [theme, setTheme] = useState(savedTheme || "dark");
     const [activeCategory, setActiveCategory] = useState(null);
-    const [currCert, setCurrCert] = useState(0);
-
-    useEffect(() => {
-        localStorage.setItem("savedTheme", theme);
-    }, [theme]);
+    const dialogRef = useRef(null);
+    const [certIndex, setCertIndex] = useState(0);
 
     function toggleTheme() {
         setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
     }
 
-    function arrowLeftCert() {
-        if (currCert > 0) setCurrCert((prevCert) => prevCert - 1);
+    function handleBackdropClick(e) {
+        if (e.target === dialogRef.current) setActiveCategory(null);
     }
 
-    function arrowRightCert() {
-        if (currCert < CERTIFICATES.length - 1) setCurrCert((prevCert) => prevCert + 1);
+    function handleArrowLeft() {
+        if (certIndex > 0) setCertIndex((prevCertIndex) => prevCertIndex - 1);
     }
+
+    function handleArrowRight() {
+        if (certIndex < CERTIFICATES.length - 1) setCertIndex((prevCertIndex) => prevCertIndex + 1);
+    }
+
+    useEffect(() => {
+        localStorage.setItem("savedTheme", theme);
+    }, [theme]);
+
+    useEffect(() => {
+        if (dialogRef.current && activeCategory) dialogRef.current.showModal();
+    }, [activeCategory]);
 
     return (
         <div className={`app ${theme} bg-(--bg-color) text-(--txt-main-color) min-h-screen transition-colors duration-300`}>
@@ -160,8 +169,8 @@ export default function App() {
                 </div>
 
                 {activeCategory && (
-                    <div onClick={() => setActiveCategory(null)} className="bg-black/60 backdrop-blur-sm p-7 flex justify-center items-center fixed inset-0">
-                        <div onClick={(e) => e.stopPropagation()} className="bg-(--cntnr-color) w-full max-w-lg max-h-[80vh] p-6 border border-(--cntnr-border-color) rounded-xl flex flex-col shadow-2xl">
+                    <dialog ref={dialogRef} onCancel={() => setActiveCategory(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color) w-full max-w-lg max-h-[80vh] m-auto p-6 border border-(--cntnr-border-color) rounded-xl shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
+                        <div className="flex flex-col">
                             <div className="flex mb-6 justify-between items-center">
                                 <h2 className="text-(--accent) text-xl font-bold">{activeCategory}</h2>
                                 <button onClick={() => setActiveCategory(null)} className="text-(--txt-muted-color) mr-2 text-xl font-bold cursor-pointer hover:text-white">&times;</button>
@@ -175,7 +184,7 @@ export default function App() {
                                 </ul>
                             </div>
                         </div>
-                    </div>
+                    </dialog>
                 )}
             </section>
 
@@ -183,15 +192,15 @@ export default function App() {
                 <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Certifications</h2>
 
                 <div className="flex justify-center items-center gap-2 sm:gap-4">
-                    <button onClick={arrowLeftCert} aria-label="Previous Certificate" className="text-(--txt-muted-color) p-3 flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
+                    <button onClick={handleArrowLeft} aria-label="Previous Certificate" className="text-(--txt-muted-color) p-3 flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
                         <i className="fa-solid fa-chevron-left text-lg"></i>
                     </button>
 
                     <div className="w-full max-w-3xl aspect-4/3 sm:aspect-16/10 flex justify-center items-center overflow-hidden">
-                        <img src={CERTIFICATES[currCert]} alt="Developer's Certificate" className="max-w-full max-h-full w-auto h-auto object-contain" />
+                        <img src={CERTIFICATES[certIndex]} alt="Developer's Certificate" className="max-w-full max-h-full w-auto h-auto object-contain" />
                     </div>
 
-                    <button onClick={arrowRightCert} aria-label="Next Certificate" className="text-(--txt-muted-color) p-3 flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
+                    <button onClick={handleArrowRight} aria-label="Next Certificate" className="text-(--txt-muted-color) p-3 flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
                         <i className="fa-solid fa-chevron-right text-lg"></i>
                     </button>
                 </div>
