@@ -169,11 +169,11 @@ export default function App() {
                 </div>
 
                 {activeCategory && (
-                    <dialog ref={dialogRef} onCancel={() => setActiveCategory(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color) w-full max-w-lg max-h-[80vh] m-auto p-6 border border-(--cntnr-border-color) rounded-xl shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
-                        <div className="flex flex-col">
-                            <div className="flex mb-6 justify-between items-center">
+                    <dialog ref={dialogRef} onCancel={() => setActiveCategory(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color) w-full max-w-lg max-h-[80vh] m-auto border border-(--cntnr-border-color) rounded-xl shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
+                        <div className="p-6 rounded-xl flex flex-col">
+                            <div className="mb-6 flex justify-between items-center">
                                 <h2 className="text-(--accent) text-xl font-bold">{activeCategory}</h2>
-                                <button onClick={() => setActiveCategory(null)} className="text-(--txt-muted-color) mr-2 text-xl font-bold cursor-pointer hover:text-white">&times;</button>
+                                <button onClick={() => setActiveCategory(null)} aria-label="Close" className="text-(--txt-muted-color) px-2 text-lg font-bold rounded-md cursor-pointer hover:text-white"><i className="fa-solid fa-xmark"></i></button>
                             </div>
 
                             <div className="pr-2 overflow-y-auto flex-1">
