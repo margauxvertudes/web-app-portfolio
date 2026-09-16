@@ -47,6 +47,22 @@ const SKILLS = {
     Tools: ["ChatGPT", "Gemini", "Git / GitHub", "VS Code", "Chrome DevTools", "Responsively App"]
 };
 
+const DESCRIPTIONS = {
+    "State Management": "Tracking and controlling application data as it changes over time to ensure the user interface accurately reflects the current state across different components.",
+    "Async/Await": "Syntactic sugar built on JavaScript Promises that lets you write asynchronous code in a clean, synchronous-looking style using async and await.",
+    "DOM Manipulation": "Using JavaScript to dynamically read, modify, add, or delete elements, attributes, and styles within a web page's Document Object Model.",
+    "Event Delegation": "A performance pattern where a single event listener is attached to a parent element to handle events triggered by present or future child elements via event bubbling.",
+    "DOM Caching": "Storing references to frequently accessed DOM elements in JavaScript variables to prevent expensive, repeated searches through the document tree.",
+    "LocalStorage": "A key-value browser storage API that saves up to 5–10MB of persistent, text-based data per domain with no expiration date.",
+    "Cloud Media Hosting": "Storing and serving media assets (images, videos, audio) on remote cloud infrastructure optimized for fast delivery, transformation, and scalability.",
+    "Progressive Web Apps (PWA)": "Web applications that leverage modern APIs, service workers, and web app manifests to deliver native-app-like features such as push notifications and offline access.",
+    "Offline Caching": "Storing essential assets and network responses locally (typically using Service Workers and the Cache API) so a web app remains functional without internet connectivity.",
+    "Responsive Design": "An approach using flexible layouts, fluid images, and CSS media queries to ensure web content automatically adapts cleanly to any screen size or device type.",
+    "Web Accessibility (a11y)": "Designing and building web applications so people with disabilities—including visual, auditory, motor, or cognitive impairments—can navigate and interact with them effectively.",
+    "SEO Optimization": "Structuring and refining web pages, content, and metadata to improve their visibility and ranking in search engine results pages.",
+    "Performance Optimization": "A set of techniques—like minification, lazy loading, and code splitting—used to decrease page load times and improve interaction speed and smoothness."
+};
+
 const CERTIFICATES = [
     "/certificates/certificate-1.jpg",
     "/certificates/certificate-2.jpg",
@@ -179,7 +195,7 @@ export default function App() {
                             <div className="pr-2 overflow-y-auto flex-1">
                                 <ul className="list-none">
                                     {SKILLS[activeCategory].map((item) => (
-                                        <li key={item} className="text-(--txt-muted-color) py-2 text-base">{item}</li>
+                                        <li key={item} className="text-(--txt-muted-color) py-2 text-base flex items-center gap-2">{item}{activeCategory === "Concepts" && <i title={DESCRIPTIONS[item]} className="fa-solid fa-circle-question text-sm cursor-pointer"></i>}</li>
                                     ))}
                                 </ul>
                             </div>
