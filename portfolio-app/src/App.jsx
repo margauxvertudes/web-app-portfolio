@@ -1,14 +1,14 @@
 import { useState, useRef, useEffect } from "react";
+import { useFloating, autoUpdate, offset, flip, shift, arrow, FloatingArrow } from "@floating-ui/react";
 import "./index.css";
 
-const NAVIGATIONS = ["About", "Projects", "Skills", "Contact"];
+const NAVIGATIONS = ["About", "Projects", "Skills", "Contacts"];
 
 const ABOUT = {
-    profilePicture: "/profilePics/profile-picture-1.png",
-    position: "Frontend Developer",
-    username: "Cha",
     name: "Margaux Ayezzalyne L. Vertudes",
-    email: "vertudesmargaux2003@gmail.com",
+    username: "Cha",
+    position: "Frontend Developer",
+    profilePicture: "/profilePics/profile-picture-1.png",
     resume: "Resume_Vertudes.pdf",
     get title() { return `Hi, I'm ${this.username} — I build🔨 fast, responsive, and scalable web applications.`; },
     description: "I specialize in building easy-to-use interfaces, clean component architectures, and responsive web applications using React, Tailwind CSS, and Sass. My focus is on writing clean, maintainable code, keeping performance fast, and delivering smooth digital experiences from design to deployment."
@@ -47,7 +47,7 @@ const SKILLS = {
     Tools: ["ChatGPT", "Gemini", "Git / GitHub", "VS Code", "Chrome DevTools", "Responsively App"]
 };
 
-const DESCRIPTIONS = {
+const descriptions = {
     "State Management": "Tracking and controlling application data as it changes over time to ensure the user interface accurately reflects the current state across different components.",
     "Async/Await": "Syntactic sugar built on JavaScript Promises that lets you write asynchronous code in a clean, synchronous-looking style using async and await.",
     "DOM Manipulation": "Using JavaScript to dynamically read, modify, add, or delete elements, attributes, and styles within a web page's Document Object Model.",
@@ -69,6 +69,33 @@ const CERTIFICATES = [
     "/certificates/certificate-3.jpg",
     "/certificates/certificate-4.jpg",
 ];
+
+const CONTACTS = {
+    email: "vertudesmargaux2003@gmail.com"
+};
+
+function DynamicToolTip({ description, children }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const arrowRef = useRef(null);
+
+    const { refs: toolTipRefs, floatingStyles: toolTipStyles, context } = useFloating({
+        placement: "top-end",
+        open: isOpen,
+        middleware: [offset(12), flip(), shift({ padding: 8 }), arrow({ element: arrowRef, padding: 12 })],
+        whileElementsMounted: autoUpdate
+    });
+
+    return (
+        <span ref={toolTipRefs.setReference} onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)} className="cursor-pointer">
+            {children}{isOpen && (
+                <div ref={toolTipRefs.setFloating} style={toolTipStyles} className="bg-(--cntnr-color) text-(--txt-main-color) w-max max-w-xs p-2.5 text-xs border border-(--cntnr-border-color) rounded-lg shadow-lg">
+                    <p className="leading-relaxed">{description}</p>
+                    <FloatingArrow ref={arrowRef} context={context} fill="var(--cntnr-color)" stroke="var(--cntnr-border-color)" strokeWidth={1}></FloatingArrow>
+                </div>
+            )}
+        </span>
+    );
+}
 
 export default function App() {
     const savedTheme = localStorage.getItem("savedTheme");
@@ -132,7 +159,7 @@ export default function App() {
                         <div className="flex justify-between items-center gap-4">
                             <div className="flex gap-4">
                                 <a href="#projects" className="bg-(--accent) text-(--cntnr-color) py-3 px-6 font-semibold rounded-lg inline-block transition-colors duration-200 hover:bg-(--accent-hover)">View Projects</a>
-                                <a href="#contact" className="bg-(--cntnr-color) text-(--txt-main-color) py-3 px-6 font-semibold border border-(--cntnr-border-color) rounded-lg inline-block transition-colors duration-200">Get In Touch</a>
+                                <a href="#contacts" className="bg-(--cntnr-color) text-(--txt-main-color) py-3 px-6 font-semibold border border-(--cntnr-border-color) rounded-lg inline-block transition-colors duration-200">Get In Touch</a>
                             </div>
 
                             <a href={`/${ABOUT.resume}`} download={ABOUT.resume} className="bg-(--cntnr-color) text-(--txt-main-color) py-3 px-6 font-semibold border border-(--cntnr-border-color) rounded-lg inline-block transition-colors duration-200">Download Resume <i className="fa-solid fa-file-arrow-down"></i></a>
@@ -189,13 +216,19 @@ export default function App() {
                         <div className="p-6 rounded-xl flex flex-col">
                             <div className="mb-6 flex justify-between items-center">
                                 <h2 className="text-(--accent) text-xl font-bold">{activeCategory}</h2>
-                                <button onClick={() => setActiveCategory(null)} aria-label="Close" className="text-(--txt-muted-color) px-2 text-lg font-bold rounded-md cursor-pointer hover:text-white"><i className="fa-solid fa-xmark"></i></button>
+                                <button onClick={() => setActiveCategory(null)} aria-label="Close" className="text-(--txt-muted-color) px-2 text-lg font-bold rounded-md cursor-pointer"><i className="fa-solid fa-xmark"></i></button>
                             </div>
 
                             <div className="pr-2 overflow-y-auto flex-1">
                                 <ul className="list-none">
                                     {SKILLS[activeCategory].map((item) => (
-                                        <li key={item} className="text-(--txt-muted-color) py-2 text-base flex items-center gap-2">{item}{activeCategory === "Concepts" && <i title={DESCRIPTIONS[item]} className="fa-solid fa-circle-question text-sm cursor-pointer"></i>}</li>
+                                        <li key={item} className="text-(--txt-muted-color) py-2 text-base flex items-center gap-2">
+                                            {item}{activeCategory === "Concepts" && (
+                                                <DynamicToolTip description={descriptions[item]}>
+                                                    <i className="fa-solid fa-circle-question text-(--txt-muted-color) text-sm transition-colors hover:text-(--accent)"></i>
+                                                </DynamicToolTip>
+                                            )}
+                                        </li>
                                     ))}
                                 </ul>
                             </div>
@@ -222,12 +255,12 @@ export default function App() {
                 </div>
             </section>
 
-            <section className="max-w-250 mx-auto py-16 px-8" id="contact">
+            <section className="max-w-250 mx-auto py-16 px-8" id="contacts">
                 <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Get In Touch</h2>
 
                 <div className="bg-(--cntnr-color) p-12 text-center border border-(--cntnr-border-color) rounded-xl">
                     <p className="text-(--txt-muted-color) mb-6">Interested in collaborating or discussing web development opportunities?</p>
-                    <a href={`mailto:${ABOUT.email}`} className="bg-(--accent) text-(--cntnr-color) py-3 px-6 font-semibold rounded-lg inline-block transition-colors duration-200 hover:bg-(--accent-hover)">Send an Email</a>
+                    <a href={`mailto:${CONTACTS.email}`} className="bg-(--accent) text-(--cntnr-color) py-3 px-6 font-semibold rounded-lg inline-block transition-colors duration-200 hover:bg-(--accent-hover)">Send an Email</a>
                 </div>
             </section>
 
