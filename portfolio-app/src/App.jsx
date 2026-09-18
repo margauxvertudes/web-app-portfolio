@@ -86,9 +86,10 @@ function DynamicToolTip({ description, children }) {
     });
 
     return (
-        <span ref={toolTipRefs.setReference} onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)} className="cursor-pointer">
-            {children}{isOpen && (
-                <div ref={toolTipRefs.setFloating} style={toolTipStyles} className="bg-(--cntnr-color) text-(--txt-main-color) w-max max-w-xs p-2.5 text-xs border border-(--cntnr-border-color) rounded-lg shadow-lg">
+        <span ref={toolTipRefs.setReference} onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)} className="cursor-pointer relative">
+            {children}
+            {isOpen && (
+                <div ref={toolTipRefs.setFloating} style={toolTipStyles} className="bg-(--cntnr-color) text-(--txt-main-color) w-max max-w-xs p-2.5 text-xs border border-(--cntnr-border-color) rounded-lg shadow-lg z-1">
                     <p className="leading-relaxed">{description}</p>
                     <FloatingArrow ref={arrowRef} context={context} fill="var(--cntnr-color)" stroke="var(--cntnr-border-color)" strokeWidth={1}></FloatingArrow>
                 </div>
@@ -212,7 +213,7 @@ export default function App() {
                 </div>
 
                 {activeCategory && (
-                    <dialog ref={dialogRef} onCancel={() => setActiveCategory(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color) w-full max-w-lg max-h-[80vh] m-auto border border-(--cntnr-border-color) rounded-xl shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
+                    <dialog ref={dialogRef} onCancel={() => setActiveCategory(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color) w-full max-w-sm min-[515px]:max-w-md min-[570px]:max-w-lg max-h-[80vh] m-auto border border-(--cntnr-border-color) rounded-xl shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
                         <div className="p-6 rounded-xl flex flex-col">
                             <div className="mb-6 flex justify-between items-center">
                                 <h2 className="text-(--accent) text-xl font-bold">{activeCategory}</h2>
@@ -223,9 +224,10 @@ export default function App() {
                                 <ul className="list-none">
                                     {SKILLS[activeCategory].map((item) => (
                                         <li key={item} className="text-(--txt-muted-color) py-2 text-base flex items-center gap-2">
-                                            {item}{activeCategory === "Concepts" && (
+                                            {item}
+                                            {activeCategory === "Concepts" && (
                                                 <DynamicToolTip description={descriptions[item]}>
-                                                    <i className="fa-solid fa-circle-question text-(--txt-muted-color) text-sm transition-colors hover:text-(--accent)"></i>
+                                                    <i className="fa-solid fa-circle-question text-(--txt-muted-color) text-sm opacity-45 transition-colors hover:text-(--accent)"></i>
                                                 </DynamicToolTip>
                                             )}
                                         </li>
