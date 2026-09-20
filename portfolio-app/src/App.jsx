@@ -74,6 +74,44 @@ const CONTACTS = {
     email: "vertudesmargaux2003@gmail.com"
 };
 
+function TechnicalSkillsModal({ activeCategory, setActiveCategory }) {
+    const dialogRef = useRef(null);
+
+    function handleBackdropClick(e) {
+        if (e.target === dialogRef.current) setActiveCategory(null);
+    }
+
+    useEffect(() => {
+        if (dialogRef.current && activeCategory) dialogRef.current.showModal();
+    }, [activeCategory]);
+
+    return (
+        <dialog ref={dialogRef} onCancel={() => setActiveCategory(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color) w-full max-w-sm min-[515px]:max-w-md min-[570px]:max-w-lg max-h-[80vh] m-auto border border-(--cntnr-border-color) rounded-xl shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
+            <div className="p-6 rounded-xl flex flex-col">
+                <div className="mb-6 flex justify-between items-center">
+                    <h2 className="text-(--accent) text-xl font-bold">{activeCategory}</h2>
+                    <button onClick={() => setActiveCategory(null)} aria-label="Close" className="text-(--txt-muted-color) px-2 text-lg font-bold rounded-md cursor-pointer"><i className="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div className="pr-2 overflow-y-auto flex-1">
+                    <ul className="list-none">
+                        {SKILLS[activeCategory].map((item) => (
+                            <li key={item} className="text-(--txt-muted-color) py-2 text-base flex items-center gap-2">
+                                {item}
+                                {activeCategory === "Concepts" && (
+                                    <DynamicToolTip description={descriptions[item]}>
+                                        <i className="fa-solid fa-circle-question text-(--txt-muted-color) text-sm opacity-45 transition-colors hover:text-(--accent)"></i>
+                                    </DynamicToolTip>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </dialog>
+    );
+}
+
 function DynamicToolTip({ description, children }) {
     const [isOpen, setIsOpen] = useState(false);
     const arrowRef = useRef(null);
@@ -102,15 +140,10 @@ export default function App() {
     const savedTheme = localStorage.getItem("savedTheme");
     const [theme, setTheme] = useState(savedTheme || "dark");
     const [activeCategory, setActiveCategory] = useState(null);
-    const dialogRef = useRef(null);
     const [certIndex, setCertIndex] = useState(0);
 
     function toggleTheme() {
         setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
-    }
-
-    function handleBackdropClick(e) {
-        if (e.target === dialogRef.current) setActiveCategory(null);
     }
 
     function handleArrowLeft() {
@@ -124,10 +157,6 @@ export default function App() {
     useEffect(() => {
         localStorage.setItem("savedTheme", theme);
     }, [theme]);
-
-    useEffect(() => {
-        if (dialogRef.current && activeCategory) dialogRef.current.showModal();
-    }, [activeCategory]);
 
     return (
         <div className={`app ${theme} bg-(--bg-color) text-(--txt-main-color) min-h-screen transition-colors duration-300`}>
@@ -212,31 +241,7 @@ export default function App() {
                     ))}
                 </div>
 
-                {activeCategory && (
-                    <dialog ref={dialogRef} onCancel={() => setActiveCategory(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color) w-full max-w-sm min-[515px]:max-w-md min-[570px]:max-w-lg max-h-[80vh] m-auto border border-(--cntnr-border-color) rounded-xl shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
-                        <div className="p-6 rounded-xl flex flex-col">
-                            <div className="mb-6 flex justify-between items-center">
-                                <h2 className="text-(--accent) text-xl font-bold">{activeCategory}</h2>
-                                <button onClick={() => setActiveCategory(null)} aria-label="Close" className="text-(--txt-muted-color) px-2 text-lg font-bold rounded-md cursor-pointer"><i className="fa-solid fa-xmark"></i></button>
-                            </div>
-
-                            <div className="pr-2 overflow-y-auto flex-1">
-                                <ul className="list-none">
-                                    {SKILLS[activeCategory].map((item) => (
-                                        <li key={item} className="text-(--txt-muted-color) py-2 text-base flex items-center gap-2">
-                                            {item}
-                                            {activeCategory === "Concepts" && (
-                                                <DynamicToolTip description={descriptions[item]}>
-                                                    <i className="fa-solid fa-circle-question text-(--txt-muted-color) text-sm opacity-45 transition-colors hover:text-(--accent)"></i>
-                                                </DynamicToolTip>
-                                            )}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </dialog>
-                )}
+                {activeCategory && <TechnicalSkillsModal activeCategory={activeCategory} setActiveCategory={setActiveCategory}></TechnicalSkillsModal>}
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="certificates">
