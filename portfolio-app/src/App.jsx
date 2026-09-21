@@ -176,11 +176,11 @@ export default function App() {
     return (
         <div className={`app ${theme} bg-(--bg-color) text-(--txt-main-color) min-h-screen transition-colors duration-300`}>
             <nav className="bg-(--bg-color) py-5 px-8 border-b border-(--cntnr-border-color) flex justify-between items-center sticky top-0">
-                <div className="text-(--accent) font-bold text-sm min-[525px]:text-lg sm:text-xl"><p><a href="./App.jsx">&lt;DevPortfolio /&gt;</a></p></div>
+                <div className="text-(--accent) font-bold text-xs min-[525px]:text-lg sm:text-xl"><p><a href="./App.jsx">&lt;DevPortfolio /&gt;</a></p></div>
 
-                <div className="text-[0.85rem] sm:text-[1rem] flex items-center gap-[0.8rem] sm:gap-6">
+                <div className="text-[0.75rem] sm:text-[1rem] flex items-center gap-[0.6rem] sm:gap-6">
                     {NAVIGATIONS.map((nav) => (
-                        <a href={`#${nav.toLowerCase()}`} key={nav} className="text-(--txt-muted-color) text-[0.95rem] transition-colors duration-200 hover:text-(--txt-main-color)">{nav}</a>
+                        <a href={`#${nav.toLowerCase()}`} key={nav} className="text-(--txt-muted-color) transition-colors duration-200 hover:text-(--txt-main-color)">{nav}</a>
                     ))}
 
                     <button onClick={toggleTheme} className="bg-transparent text-(--txt-main-color) py-[0.4rem] px-[0.8rem] border border-(--cntnr-border-color) rounded-md cursor-pointer">
