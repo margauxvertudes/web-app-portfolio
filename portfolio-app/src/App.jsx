@@ -136,11 +136,26 @@ function DynamicToolTip({ description, children }) {
     );
 }
 
+function CertificationsModal({ certIndex, activeCert, setActiveCert }) {
+    const dialogRef = useRef(null);
+
+    useEffect(() => {
+        if (dialogRef.current && activeCert) dialogRef.current.showModal();
+    }, [activeCert]);
+
+    return (
+        <dialog ref={dialogRef} onCancel={() => setActiveCert(null)} onClick={() => setActiveCert(false)} className="bg-transparent w-[90vw] max-w-250 max-h-[90vh] m-auto p-0 border-none outline-none flex justify-center items-center backdrop:bg-black/60 backdrop:backdrop-blur-sm">
+            <img src={CERTIFICATES[certIndex]} alt="Developer's Certificate" className="max-w-full max-h-full w-auto h-auto rounded-md cursor-pointer object-contain" />
+        </dialog>
+    );
+}
+
 export default function App() {
     const savedTheme = localStorage.getItem("savedTheme");
     const [theme, setTheme] = useState(savedTheme || "dark");
     const [activeCategory, setActiveCategory] = useState(null);
     const [certIndex, setCertIndex] = useState(0);
+    const [activeCert, setActiveCert] = useState(false);
 
     function toggleTheme() {
         setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
@@ -248,17 +263,19 @@ export default function App() {
                 <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Certifications</h2>
 
                 <div className="flex justify-center items-center gap-2 sm:gap-4">
-                    <button onClick={handleArrowLeft} aria-label="Previous Certificate" className="text-(--txt-muted-color) p-3 flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
+                    <button onClick={handleArrowLeft} aria-label="Previous Certificate" className="text-(--txt-muted-color) p-3 cursor-pointer flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
                         <i className="fa-solid fa-chevron-left text-lg"></i>
                     </button>
 
                     <div className="w-full max-w-3xl aspect-4/3 sm:aspect-16/10 flex justify-center items-center overflow-hidden">
-                        <img src={CERTIFICATES[certIndex]} alt="Developer's Certificate" className="max-w-full max-h-full w-auto h-auto object-contain" />
+                        <img src={CERTIFICATES[certIndex]} alt="Developer's Certificate" onClick={() => setActiveCert(true)} className="max-w-full max-h-full w-auto h-auto rounded-md cursor-pointer object-contain" />
                     </div>
 
-                    <button onClick={handleArrowRight} aria-label="Next Certificate" className="text-(--txt-muted-color) p-3 flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
+                    <button onClick={handleArrowRight} aria-label="Next Certificate" className="text-(--txt-muted-color) p-3 cursor-pointer flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
                         <i className="fa-solid fa-chevron-right text-lg"></i>
                     </button>
+
+                    {activeCert && <CertificationsModal certIndex={certIndex} activeCert={activeCert} setActiveCert={setActiveCert}></CertificationsModal>}
                 </div>
             </section>
 
