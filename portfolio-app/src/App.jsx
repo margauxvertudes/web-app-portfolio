@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useFloating, autoUpdate, offset, flip, shift, arrow, FloatingArrow } from "@floating-ui/react";
+import { FaEnvelope, FaPhone, FaFacebook } from "react-icons/fa6";
 import "./index.css";
 
 const NAVIGATIONS = ["About", "Projects", "Skills", "Contacts"];
@@ -70,9 +71,23 @@ const CERTIFICATES = [
     "/certificates/certificate-4.jpg",
 ];
 
-const CONTACTS = {
-    email: "vertudesmargaux2003@gmail.com"
-};
+const CONTACTS = [
+    {
+        email: "vertudesmargaux2003@gmail.com",
+        title: "Send an Email",
+        description: "Want to talk or ask something? Send an email anytime and let's chat."
+    },
+    {
+        phone: "+63 955 942 6287",
+        title: "Give Me a Call",
+        description: "Prefer a direct conversation? You can reach me during business hours."
+    },
+    {
+        facebook: "https://www.facebook.com/ayezza.margaux",
+        title: "Connect on Social Media",
+        description: "Follow me for updates and feel free to send a message."
+    }
+];
 
 function TechnicalSkillsModal({ activeCategory, setActiveCategory }) {
     const dialogRef = useRef(null);
@@ -282,9 +297,32 @@ export default function App() {
             <section className="max-w-250 mx-auto py-16 px-8" id="contacts">
                 <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Get In Touch</h2>
 
-                <div className="bg-(--cntnr-color) p-12 text-center border border-(--cntnr-border-color) rounded-xl">
-                    <p className="text-(--txt-muted-color) mb-6">Interested in collaborating or discussing web development opportunities?</p>
-                    <a href={`mailto:${CONTACTS.email}`} className="bg-(--accent) text-(--cntnr-color) py-3 px-6 font-semibold rounded-lg inline-block transition-colors duration-200 hover:bg-(--accent-hover)">Send an Email</a>
+                <div className="grid grid-cols-[repeat(auto-fit,minmax(220px,1fr))] gap-6">
+                    {CONTACTS.map((category, index) => {
+                        const isEmail = "email" in category;
+                        const isPhone = "phone" in category;
+                        const isFacebook = "facebook" in category;
+
+                        return (
+                            <div key={index} className="bg-(--cntnr-color) p-6 text-center border border-(--cntnr-border-color) rounded-xl">
+                                {isEmail && <FaEnvelope className="text-(--accent) mx-auto text-3xl"></FaEnvelope>}
+                                {isPhone && <FaPhone className="text-(--accent) mx-auto text-3xl"></FaPhone>}
+                                {isFacebook && <FaFacebook className="text-(--accent) mx-auto text-3xl"></FaFacebook>}
+
+                                <h2 className="text-(--accent) pt-3 pb-2">{category.title}</h2>
+                                <p className="pb-4 text-[0.9rem]">{category.description}</p>
+
+                                {isEmail && <a href={`mailto:${CONTACTS.email}`} className="bg-(--accent) text-(--cntnr-color) py-3 px-6 text-[0.85rem] font-semibold rounded-lg inline-block transition-colors duration-200 hover:bg-(--accent-hover)">Send an Email</a>}
+                                {isPhone && (
+                                    <>
+                                        <p className="text-(--accent)">{category.phone}</p>
+                                        <p className="text-(--txt-muted-color) text-xs">[Note: Best for urgent matters.]</p>
+                                    </>
+                                )}
+                                {isFacebook && <a href="https://www.facebook.com/ayezza.margaux" target="_blank" className="max-w-full text-sm break-all inline-block">[<span className="text-(--accent)">https://www.facebook.com/ayezza.margaux</span>]</a>}
+                            </div>
+                        );
+                    })}
                 </div>
             </section>
 
