@@ -22,7 +22,8 @@ const PROJECTS = [
         description: "Retro-themed web calculator with keyboard support, persistent user themes, and custom audio feedback.",
         tags: ["JavaScript", "CSS / Sass", "LocalStorage", "Caching", "Web API", "HTML"],
         demoUrl: "#",
-        githubUrl: "#"
+        githubUrl: "https://github.com/deyl-1999/retro-calculator.git",
+        deployedUrl: "https://retro-calc.vercel.app/"
     },
     {
         id: 2,
@@ -30,7 +31,8 @@ const PROJECTS = [
         description: "Digital love letter app featuring custom riddle-locked access, photo attachments, and shareable links.",
         tags: ["JavaScript", "CSS / Sass", "URL Parameter", "Cloud Image Hosting", "Web API", "HTML"],
         demoUrl: "#",
-        githubUrl: "#"
+        githubUrl: "https://github.com/deyl-1999/love-letter.git",
+        deployedUrl: "https://lovkey.vercel.app/"
     },
     {
         id: 3,
@@ -38,7 +40,8 @@ const PROJECTS = [
         description: "Responsive web app portfolio showcasing personal projects, technical skills, and interactive contact features.",
         tags: ["React", "JavaScript", "Vite", "Tailwind CSS", "CSS", "HTML"],
         demoUrl: "#",
-        githubUrl: "#"
+        githubUrl: "https://github.com/deyl-1999/portfolio-app.git",
+        deployedUrl: "#"
     }
 ];
 
@@ -232,23 +235,28 @@ export default function App() {
                 <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Featured Projects</h2>
 
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
-                    {PROJECTS.map((project) => (
-                        <div key={project.id} className="bg-(--cntnr-color) p-6 border border-(--cntnr-border-color) rounded-xl flex flex-col">
-                            <h3 className="mb-2">{project.title}</h3>
-                            <p className="text-(--txt-muted-color) mb-5 text-[0.95rem]/[1.5] grow">{project.description}</p>
+                    {PROJECTS.map((project) => {
+                        const isDeployed = Boolean(project.deployedUrl && project.deployedUrl !== "#");
 
-                            <div className="mb-5 flex flex-wrap gap-2">
-                                {project.tags.map((tag) => (
-                                    <span key={tag} className="bg-(--bg-color) py-[0.2rem] px-[0.6rem] text-xs border border-(--cntnr-border-color) rounded">{tag}</span>
-                                ))}
-                            </div>
+                        return (
+                            <div key={project.id} className="bg-(--cntnr-color) p-6 border border-(--cntnr-border-color) rounded-xl flex flex-col">
+                                <h3 className="mb-2">{project.title}</h3>
+                                <p className="text-(--txt-muted-color) mb-5 text-[0.95rem]/[1.5] grow">{project.description}</p>
 
-                            <div className="flex gap-4">
-                                <a href={project.demoUrl} className="text-(--accent) text-[0.9rem] font-semibold">Live Demo &rarr;</a>
-                                <a href={project.githubUrl} className="text-(--accent) text-[0.9rem] font-semibold">GitHub &rarr;</a>
+                                <div className="mb-5 flex flex-wrap gap-2">
+                                    {project.tags.map((tag) => (
+                                        <span key={tag} className="bg-(--bg-color) py-[0.2rem] px-[0.6rem] text-xs border border-(--cntnr-border-color) rounded">{tag}</span>
+                                    ))}
+                                </div>
+
+                                <div className="flex gap-4">
+                                    <a href={project.demoUrl} className="text-(--accent) text-[0.9rem] font-semibold">Live Demo &rarr;</a>
+                                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-(--accent) text-[0.9rem] font-semibold">GitHub &rarr;</a>
+                                    {isDeployed && <a href={project.deployedUrl} target="_blank" rel="noopener noreferrer" className="text-(--accent) text-[0.9rem] font-semibold">Open &rarr;</a>}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </section>
 
@@ -319,7 +327,7 @@ export default function App() {
                                         <p className="text-(--txt-muted-color) text-xs">[Note: Best for urgent matters.]</p>
                                     </>
                                 )}
-                                {isFacebook && <a href="https://www.facebook.com/ayezza.margaux" target="_blank" className="max-w-full text-sm break-all inline-block">[<span className="text-(--accent)">https://www.facebook.com/ayezza.margaux</span>]</a>}
+                                {isFacebook && <a href="https://www.facebook.com/ayezza.margaux" target="_blank" rel="noopener noreferrer" className="max-w-full text-sm break-all inline-block">[<span className="text-(--accent)">https://www.facebook.com/ayezza.margaux</span>]</a>}
                             </div>
                         );
                     })}
