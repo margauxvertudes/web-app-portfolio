@@ -17,33 +17,64 @@ const ABOUT = {
 
 const PROJECTS = [
     {
-        id: 1,
+        id: "RetroCalc",
         title: "RetroCalc – Retro Themed Web Calculator",
         description: "Retro-themed web calculator with keyboard support, persistent user themes, and custom audio feedback.",
         tags: ["JavaScript", "CSS / Sass", "LocalStorage", "Caching", "Web API", "HTML"],
-        demoUrl: "#",
         githubUrl: "https://github.com/deyl-1999/retro-calculator.git",
         deployedUrl: "https://retro-calc.vercel.app/"
     },
     {
-        id: 2,
+        id: "LovKey",
         title: "LovKey – Quiz-Locked Digital Love Letter App",
         description: "Digital love letter app featuring custom riddle-locked access, photo attachments, and shareable links.",
         tags: ["JavaScript", "CSS / Sass", "URL Parameter", "Cloud Image Hosting", "Web API", "HTML"],
-        demoUrl: "#",
         githubUrl: "https://github.com/deyl-1999/love-letter.git",
         deployedUrl: "https://lovkey.vercel.app/"
     },
     {
-        id: 3,
+        id: "DevPortfolio",
         title: "DevPortfolio – My Personal Web App Portfolio",
         description: "Responsive web app portfolio showcasing personal projects, technical skills, and interactive contact features.",
         tags: ["React", "JavaScript", "Vite", "Tailwind CSS", "CSS", "HTML"],
-        demoUrl: "#",
         githubUrl: "https://github.com/deyl-1999/portfolio-app.git",
         deployedUrl: "#"
     }
 ];
+
+const RetroCalc = "/slides/RetroCalc";
+const LovKey = "/slides/LovKey";
+const DevPortfolio = "/slides/DevPortfolio";
+
+const PROJECTS_slides = {
+    RetroCalc: [`${RetroCalc}/slide-1.png`, `${RetroCalc}/slide-2.png`, `${RetroCalc}/slide-3.png`, `${RetroCalc}/slide-4.png`, `${RetroCalc}/slide-5.png`],
+    LovKey: [`${LovKey}/slide-1.png`, `${LovKey}/slide-2.png`, `${LovKey}/slide-3.png`, `${LovKey}/slide-4.png`, `${LovKey}/slide-5.png`],
+    DevPortfolio: [`${DevPortfolio}/slide-1.png`, `${DevPortfolio}/slide-2.png`, `${DevPortfolio}/slide-3.png`, `${DevPortfolio}/slide-4.png`, `${DevPortfolio}/slide-5.png`]
+};
+
+const PROJECTS_descriptions = {
+    RetroCalc: [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo."
+    ],
+    LovKey: [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo."
+    ],
+    DevPortfolio: [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo."
+    ]
+};
 
 const SKILLS = {
     Languages: ["React", "JavaScript (ES6+)", "Tailwind CSS", "Sass", "CSS3", "HTML5", "PostgreSQL", "MySQL"],
@@ -51,7 +82,7 @@ const SKILLS = {
     Tools: ["ChatGPT", "Gemini", "Git / GitHub", "VS Code", "Chrome DevTools", "Responsively App"]
 };
 
-const descriptions = {
+const SKILLS_descriptions = {
     "State Management": "Tracking and controlling application data as it changes over time to ensure the user interface accurately reflects the current state across different components.",
     "Async/Await": "Syntactic sugar built on JavaScript Promises that lets you write asynchronous code in a clean, synchronous-looking style using async and await.",
     "DOM Manipulation": "Using JavaScript to dynamically read, modify, add, or delete elements, attributes, and styles within a web page's Document Object Model.",
@@ -92,39 +123,43 @@ const CONTACTS = [
     }
 ];
 
-function TechnicalSkillsModal({ activeCategory, setActiveCategory }) {
+function FeaturedProjectsModal() {
+    
+}
+
+function TechnicalSkillsModal({ activeSkill, setActiveSkill }) {
     const dialogRef = useRef(null);
 
     function handleBackdropClick(e) {
-        if (e.target === dialogRef.current) setActiveCategory(null);
+        if (e.target === dialogRef.current) setActiveSkill(null);
     }
 
     useEffect(() => {
-        if (dialogRef.current && activeCategory) dialogRef.current.showModal();
-    }, [activeCategory]);
+        if (dialogRef.current && activeSkill) dialogRef.current.showModal();
+    }, [activeSkill]);
 
     return (
-        <dialog ref={dialogRef} onCancel={() => setActiveCategory(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color) w-full max-w-sm min-[515px]:max-w-md min-[570px]:max-w-lg max-h-[80vh] m-auto border border-(--cntnr-border-color) rounded-xl shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
+        <dialog ref={dialogRef} onCancel={() => setActiveSkill(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color) w-full max-w-sm min-[515px]:max-w-md min-[570px]:max-w-lg max-h-[80vh] m-auto border border-(--cntnr-border-color) rounded-xl shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
             <div className="p-6 rounded-xl flex flex-col">
-                <div className="mb-6 flex justify-between items-center">
-                    <h2 className="text-(--accent) text-xl font-bold">{activeCategory}</h2>
-                    <button onClick={() => setActiveCategory(null)} aria-label="Close" className="text-(--txt-muted-color) px-2 text-lg font-bold rounded-md cursor-pointer"><i className="fa-solid fa-xmark"></i></button>
-                </div>
+                <header className="mb-6 flex justify-between items-center">
+                    <h2 className="text-(--accent) text-xl font-bold">{activeSkill}</h2>
+                    <button onClick={() => setActiveSkill(null)} aria-label="Close" className="text-(--txt-muted-color) px-2 text-lg font-bold rounded-md cursor-pointer"><i className="fa-solid fa-xmark"></i></button>
+                </header>
 
-                <div className="pr-2 overflow-y-auto flex-1">
+                <section className="pr-2 overflow-y-auto flex-1">
                     <ul className="list-none">
-                        {SKILLS[activeCategory].map((item) => (
+                        {SKILLS[activeSkill].map((item) => (
                             <li key={item} className="text-(--txt-muted-color) py-2 text-base flex items-center gap-2">
                                 {item}
-                                {activeCategory === "Concepts" && (
-                                    <DynamicToolTip description={descriptions[item]}>
+                                {activeSkill === "Concepts" && (
+                                    <DynamicToolTip description={SKILLS_descriptions[item]}>
                                         <i className="fa-solid fa-circle-question text-(--txt-muted-color) text-sm opacity-45 transition-colors hover:text-(--accent)"></i>
                                     </DynamicToolTip>
                                 )}
                             </li>
                         ))}
                     </ul>
-                </div>
+                </section>
             </div>
         </dialog>
     );
@@ -154,26 +189,26 @@ function DynamicToolTip({ description, children }) {
     );
 }
 
-function CertificationsModal({ certIndex, activeCert, setActiveCert }) {
+function CertificationsModal({ certIndex, isCertActive, setIsCertActive }) {
     const dialogRef = useRef(null);
 
     useEffect(() => {
-        if (dialogRef.current && activeCert) dialogRef.current.showModal();
-    }, [activeCert]);
+        if (dialogRef.current && isCertActive) dialogRef.current.showModal();
+    }, [isCertActive]);
 
     return (
-        <dialog ref={dialogRef} onCancel={() => setActiveCert(null)} onClick={() => setActiveCert(false)} className="bg-transparent w-[90vw] max-w-250 max-h-[90vh] m-auto p-0 border-none outline-none flex justify-center items-center backdrop:bg-black/60 backdrop:backdrop-blur-sm">
+        <dialog ref={dialogRef} onCancel={() => setIsCertActive(false)} onClick={() => setIsCertActive(false)} className="bg-transparent w-[90vw] max-w-250 max-h-[90vh] m-auto p-0 border-none outline-none flex justify-center items-center backdrop:bg-black/60 backdrop:backdrop-blur-sm">
             <img src={CERTIFICATES[certIndex]} alt="Developer's Certificate" className="max-w-full max-h-full w-auto h-auto rounded-md cursor-pointer object-contain" />
         </dialog>
     );
 }
 
-export default function App() {
+export default function PortfolioApp() {
     const savedTheme = localStorage.getItem("savedTheme");
     const [theme, setTheme] = useState(savedTheme || "dark");
-    const [activeCategory, setActiveCategory] = useState(null);
+    const [activeSkill, setActiveSkill] = useState(null);
     const [certIndex, setCertIndex] = useState(0);
-    const [activeCert, setActiveCert] = useState(false);
+    const [isCertActive, setIsCertActive] = useState(false);
 
     function toggleTheme() {
         setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
@@ -190,6 +225,17 @@ export default function App() {
     useEffect(() => {
         localStorage.setItem("savedTheme", theme);
     }, [theme]);
+
+    const [activeDemo, setActiveDemo] = useState(null);
+    const dialogRef = useRef(null);
+
+    function handleBackdropClick(e) {
+        if (e.target === dialogRef.current) setActiveDemo(null);
+    }
+
+    useEffect(() => {
+        if (dialogRef.current && activeDemo) dialogRef.current.showModal();
+    }, [activeDemo]);
 
     return (
         <div className={`app ${theme} bg-(--bg-color) text-(--txt-main-color) min-h-screen transition-colors duration-300`}>
@@ -250,14 +296,35 @@ export default function App() {
                                 </div>
 
                                 <div className="flex gap-4">
-                                    <a href={project.demoUrl} className="text-(--accent) text-[0.9rem] font-semibold">Live Demo &rarr;</a>
+                                    <a href="#projects" onClick={() => setActiveDemo(project.id)} className="text-(--accent) text-[0.9rem] font-semibold">Demo &rarr;</a>
                                     <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-(--accent) text-[0.9rem] font-semibold">GitHub &rarr;</a>
-                                    {isDeployed && <a href={project.deployedUrl} target="_blank" rel="noopener noreferrer" className="text-(--accent) text-[0.9rem] font-semibold">Open &rarr;</a>}
+                                    {isDeployed && <a href={project.deployedUrl} target="_blank" rel="noopener noreferrer" className="text-(--accent) ml-auto text-[0.9rem] font-semibold">Open &rarr;</a>}
                                 </div>
                             </div>
                         );
                     })}
                 </div>
+
+                {activeDemo && (
+                    <dialog ref={dialogRef} onCancel={() => setActiveDemo(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color) w-full max-w-sm min-[515px]:max-w-md min-[570px]:max-w-lg max-h-[80vh] m-auto border border-(--cntnr-border-color) rounded-xl shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
+                        <div className="p-6 rounded-xl flex flex-col">
+                            <header className="mb-6 flex justify-between items-center">
+                                <h2 className="text-(--accent) text-xl font-bold">{activeDemo}</h2>
+                                <button onClick={() => setActiveDemo(null)} aria-label="Close" className="text-(--txt-muted-color) px-2 text-lg font-bold rounded-md cursor-pointer"><i className="fa-solid fa-xmark"></i></button>
+                            </header>
+
+                            <section>
+                                <button></button>
+
+                                <img />
+
+                                <button></button>
+
+                                <p></p>
+                            </section>
+                        </div>
+                    </dialog>
+                )}
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="skills">
@@ -274,12 +341,12 @@ export default function App() {
                                 ))}
                             </ul>
 
-                            <a href="#skills" onClick={() => setActiveCategory(category)} className="text-(--accent) mt-3 text-[0.9rem] font-semibold inline-block">Show More &rarr;</a>
+                            <a href="#skills" onClick={() => setActiveSkill(category)} className="text-(--accent) mt-3 text-[0.9rem] font-semibold inline-block">Show More &rarr;</a>
                         </div>
                     ))}
                 </div>
 
-                {activeCategory && <TechnicalSkillsModal activeCategory={activeCategory} setActiveCategory={setActiveCategory}></TechnicalSkillsModal>}
+                {activeSkill && <TechnicalSkillsModal activeSkill={activeSkill} setActiveSkill={setActiveSkill}></TechnicalSkillsModal>}
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="certificates">
@@ -291,14 +358,14 @@ export default function App() {
                     </button>
 
                     <div className="w-full max-w-3xl aspect-4/3 sm:aspect-16/10 flex justify-center items-center overflow-hidden">
-                        <img src={CERTIFICATES[certIndex]} alt="Developer's Certificate" onClick={() => setActiveCert(true)} className="max-w-full max-h-full w-auto h-auto rounded-md cursor-pointer object-contain" />
+                        <img src={CERTIFICATES[certIndex]} alt="Developer's Certificate" onClick={() => setIsCertActive(true)} className="max-w-full max-h-full w-auto h-auto rounded-md cursor-pointer object-contain" />
                     </div>
 
                     <button onClick={handleArrowRight} aria-label="Next Certificate" className="text-(--txt-muted-color) p-3 cursor-pointer flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
                         <i className="fa-solid fa-chevron-right text-lg"></i>
                     </button>
 
-                    {activeCert && <CertificationsModal certIndex={certIndex} activeCert={activeCert} setActiveCert={setActiveCert}></CertificationsModal>}
+                    {isCertActive && <CertificationsModal certIndex={certIndex} isCertActive={isCertActive} setIsCertActive={setIsCertActive}></CertificationsModal>}
                 </div>
             </section>
 
