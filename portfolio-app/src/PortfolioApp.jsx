@@ -124,7 +124,16 @@ const CONTACTS = [
 ];
 
 function FeaturedProjectsModal({ activeDemo, setActiveDemo }) {
+    const [slideIndex, setSlideIndex] = useState(0);
     const dialogRef = useRef(null);
+
+    function handleArrowLeft() {
+        if (slideIndex > 0) setSlideIndex((prevSlideIndex) => prevSlideIndex - 1);
+    }
+
+    function handleArrowRight() {
+        if (slideIndex < PROJECTS_slides[activeDemo].length - 1) setSlideIndex((prevSlideIndex) => prevSlideIndex + 1);
+    }
 
     function handleBackdropClick(e) {
         if (e.target === dialogRef.current) setActiveDemo(null);
@@ -135,22 +144,28 @@ function FeaturedProjectsModal({ activeDemo, setActiveDemo }) {
     }, [activeDemo]);
 
     return (
-        <dialog ref={dialogRef} onCancel={() => setActiveDemo(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color) w-full max-w-sm min-[515px]:max-w-md min-[570px]:max-w-lg max-h-[80vh] m-auto border border-(--cntnr-border-color) rounded-xl shadow-2xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
+        <dialog ref={dialogRef} onCancel={() => setActiveDemo(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color)/40 w-full max-w-sm min-[515px]:max-w-md min-[570px]:max-w-lg max-h-[80vh] m-auto rounded-xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
             <div className="p-6 rounded-xl flex flex-col">
                 <header className="mb-6 flex justify-between items-center">
                     <h2 className="text-(--accent) text-xl font-bold">{activeDemo}</h2>
                     <button onClick={() => setActiveDemo(null)} aria-label="Close" className="text-(--txt-muted-color) px-2 text-lg font-bold rounded-md cursor-pointer"><i className="fa-solid fa-xmark"></i></button>
                 </header>
 
-                <section>
-                    <button></button>
+                <section className="flex justify-center items-center gap-2 sm:gap-4">
+                    <button onClick={handleArrowLeft} aria-label="Previous Slide" className="text-(--txt-muted-color) p-3 cursor-pointer flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
+                        <i className="fa-solid fa-chevron-left text-lg"></i>
+                    </button>
 
-                    <img />
+                    <div className="w-full max-w-3xl aspect-4/3 sm:aspect-16/10 flex justify-center items-center overflow-hidden">
+                        <img src={PROJECTS_slides[activeDemo][slideIndex]} alt={`${activeDemo}'s User Interface`} className="text-(--txt-muted-color) max-w-full max-h-full w-auto h-auto rounded-md cursor-pointer object-contain" />
+                    </div>
 
-                    <button></button>
-
-                    <p></p>
+                    <button onClick={handleArrowRight} aria-label="Next Slide" className="text-(--txt-muted-color) p-3 cursor-pointer flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
+                        <i className="fa-solid fa-chevron-right text-lg"></i>
+                    </button>
                 </section>
+
+                <p className="text-(--txt-muted-color) pt-4 text-center">{PROJECTS_descriptions[activeDemo][slideIndex]}</p>
             </div>
         </dialog>
     );
