@@ -147,12 +147,12 @@ function FeaturedProjectsModal({ activeDemo, setActiveDemo, theme }) {
         <dialog ref={dialogRef} onCancel={() => setActiveDemo(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color)/40 w-full max-w-sm min-[575px]:max-w-lg min-[640px]:max-w-xl min-[730px]:max-w-2xl min-[830px]:max-w-3xl min-[960px]:max-w-4xl max-h-[80vh] m-auto rounded-xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
             <div className="flex flex-col gap-5">
                 <header className="px-5 py-3 flex justify-between items-center">
-                    <h2 className="text-(--accent) text-xl font-bold">{activeDemo}</h2>
-                    <button onClick={() => setActiveDemo(null)} aria-label="Close" className="text-(--txt-muted-color) px-2 text-lg font-bold rounded-md cursor-pointer"><i className="fa-solid fa-xmark"></i></button>
+                    <h2 className={`${theme === "dark" ? "text-(--accent)" : "text-gray-800"} text-xl font-bold`}>{activeDemo}</h2>
+                    <button onClick={() => setActiveDemo(null)} aria-label="Close" className={`${theme === "dark" ? "text-(--txt-muted-color)" : "text-white"} px-2 text-lg font-bold rounded-md cursor-pointer`}><i className="fa-solid fa-xmark"></i></button>
                 </header>
 
                 <section className="px-10 flex justify-center items-center gap-2 sm:gap-4">
-                    <button onClick={handleArrowLeft} aria-label="Previous Slide" className="text-(--txt-muted-color) p-3 cursor-pointer flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
+                    <button onClick={handleArrowLeft} aria-label="Previous Slide" className="text-white p-3 cursor-pointer flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
                         <i className="fa-solid fa-chevron-left text-lg"></i>
                     </button>
 
@@ -160,7 +160,7 @@ function FeaturedProjectsModal({ activeDemo, setActiveDemo, theme }) {
                         <img src={PROJECTS_slides[activeDemo][slideIndex]} alt={`${activeDemo}'s User Interface`} className="text-(--txt-muted-color) max-w-full max-h-full w-auto h-auto rounded-md object-contain" />
                     </div>
 
-                    <button onClick={handleArrowRight} aria-label="Next Slide" className="text-(--txt-muted-color) p-3 cursor-pointer flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
+                    <button onClick={handleArrowRight} aria-label="Next Slide" className="text-white p-3 cursor-pointer flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
                         <i className="fa-solid fa-chevron-right text-lg"></i>
                     </button>
                 </section>
@@ -228,7 +228,7 @@ function DynamicToolTip({ description, children }) {
             {isOpen && (
                 <div ref={toolTipRefs.setFloating} style={toolTipStyles} className="bg-(--cntnr-color) text-(--txt-main-color) w-max max-w-xs p-2.5 text-xs border border-(--cntnr-border-color) rounded-lg shadow-lg z-1">
                     <p className="leading-relaxed">{description}</p>
-                    <FloatingArrow ref={arrowRef} context={context} fill="var(--cntnr-color)" stroke="var(--cntnr-border-color)" strokeWidth={1}></FloatingArrow>
+                    <FloatingArrow ref={arrowRef} context={context} fill="var(--cntnr-color)" stroke="var(--cntnr-border-color)" strokeWidth={1} />
                 </div>
             )}
         </span>
@@ -341,7 +341,7 @@ export default function PortfolioApp() {
                     })}
                 </div>
 
-                {activeDemo && <FeaturedProjectsModal activeDemo={activeDemo} setActiveDemo={setActiveDemo} theme={theme}></FeaturedProjectsModal>}
+                {activeDemo && <FeaturedProjectsModal activeDemo={activeDemo} setActiveDemo={setActiveDemo} theme={theme} />}
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="skills">
@@ -363,7 +363,7 @@ export default function PortfolioApp() {
                     ))}
                 </div>
 
-                {activeSkill && <TechnicalSkillsModal activeSkill={activeSkill} setActiveSkill={setActiveSkill}></TechnicalSkillsModal>}
+                {activeSkill && <TechnicalSkillsModal activeSkill={activeSkill} setActiveSkill={setActiveSkill} />}
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="certificates">
@@ -382,7 +382,7 @@ export default function PortfolioApp() {
                         <i className="fa-solid fa-chevron-right text-lg"></i>
                     </button>
 
-                    {isCertActive && <CertificationsModal certIndex={certIndex} isCertActive={isCertActive} setIsCertActive={setIsCertActive}></CertificationsModal>}
+                    {isCertActive && <CertificationsModal certIndex={certIndex} isCertActive={isCertActive} setIsCertActive={setIsCertActive} />}
                 </div>
             </section>
 
@@ -397,9 +397,9 @@ export default function PortfolioApp() {
 
                         return (
                             <div key={index} className="bg-(--cntnr-color) p-6 text-center border border-(--cntnr-border-color) rounded-xl">
-                                {isEmail && <FaEnvelope className="text-(--accent) mx-auto text-3xl"></FaEnvelope>}
-                                {isPhone && <FaPhone className="text-(--accent) mx-auto text-3xl"></FaPhone>}
-                                {isFacebook && <FaFacebook className="text-(--accent) mx-auto text-3xl"></FaFacebook>}
+                                {isEmail && <FaEnvelope className="text-(--accent) mx-auto text-3xl" />}
+                                {isPhone && <FaPhone className="text-(--accent) mx-auto text-3xl" />}
+                                {isFacebook && <FaFacebook className="text-(--accent) mx-auto text-3xl" />}
 
                                 <h2 className="text-(--accent) pt-3 pb-2">{category.title}</h2>
                                 <p className="pb-4 text-[0.9rem]">{category.description}</p>
