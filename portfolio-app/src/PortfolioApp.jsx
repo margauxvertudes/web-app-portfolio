@@ -123,7 +123,7 @@ const CONTACTS = [
     }
 ];
 
-function FeaturedProjectsModal({ activeDemo, setActiveDemo }) {
+function FeaturedProjectsModal({ activeDemo, setActiveDemo, theme }) {
     const [slideIndex, setSlideIndex] = useState(0);
     const dialogRef = useRef(null);
 
@@ -144,20 +144,20 @@ function FeaturedProjectsModal({ activeDemo, setActiveDemo }) {
     }, [activeDemo]);
 
     return (
-        <dialog ref={dialogRef} onCancel={() => setActiveDemo(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color)/40 w-full max-w-sm min-[515px]:max-w-md min-[570px]:max-w-lg max-h-[80vh] m-auto rounded-xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
-            <div className="p-6 rounded-xl flex flex-col">
-                <header className="mb-6 flex justify-between items-center">
+        <dialog ref={dialogRef} onCancel={() => setActiveDemo(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color)/40 w-full max-w-sm min-[575px]:max-w-lg min-[640px]:max-w-xl min-[730px]:max-w-2xl min-[830px]:max-w-3xl min-[960px]:max-w-4xl max-h-[80vh] m-auto rounded-xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
+            <div className="flex flex-col gap-5">
+                <header className="px-5 py-3 flex justify-between items-center">
                     <h2 className="text-(--accent) text-xl font-bold">{activeDemo}</h2>
                     <button onClick={() => setActiveDemo(null)} aria-label="Close" className="text-(--txt-muted-color) px-2 text-lg font-bold rounded-md cursor-pointer"><i className="fa-solid fa-xmark"></i></button>
                 </header>
 
-                <section className="flex justify-center items-center gap-2 sm:gap-4">
+                <section className="px-10 flex justify-center items-center gap-2 sm:gap-4">
                     <button onClick={handleArrowLeft} aria-label="Previous Slide" className="text-(--txt-muted-color) p-3 cursor-pointer flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
                         <i className="fa-solid fa-chevron-left text-lg"></i>
                     </button>
 
                     <div className="w-full max-w-3xl aspect-4/3 sm:aspect-16/10 flex justify-center items-center overflow-hidden">
-                        <img src={PROJECTS_slides[activeDemo][slideIndex]} alt={`${activeDemo}'s User Interface`} className="text-(--txt-muted-color) max-w-full max-h-full w-auto h-auto rounded-md cursor-pointer object-contain" />
+                        <img src={PROJECTS_slides[activeDemo][slideIndex]} alt={`${activeDemo}'s User Interface`} className="text-(--txt-muted-color) max-w-full max-h-full w-auto h-auto rounded-md object-contain" />
                     </div>
 
                     <button onClick={handleArrowRight} aria-label="Next Slide" className="text-(--txt-muted-color) p-3 cursor-pointer flex justify-center items-center rounded-lg transition-colors shrink-0 hover:text-(--accent)">
@@ -165,7 +165,9 @@ function FeaturedProjectsModal({ activeDemo, setActiveDemo }) {
                     </button>
                 </section>
 
-                <p className="text-(--txt-muted-color) pt-4 text-center">{PROJECTS_descriptions[activeDemo][slideIndex]}</p>
+                <div className="bg-(--cntnr-color) px-10 py-5 rounded-bl-xl rounded-br-xl">
+                    <p className={`${theme === "dark" ? "text-(--txt-muted-color)" : "text-gray-800"}`}>{PROJECTS_descriptions[activeDemo][slideIndex]}</p>
+                </div>
             </div>
         </dialog>
     );
@@ -339,7 +341,7 @@ export default function PortfolioApp() {
                     })}
                 </div>
 
-                {activeDemo && <FeaturedProjectsModal activeDemo={activeDemo} setActiveDemo={setActiveDemo}></FeaturedProjectsModal>}
+                {activeDemo && <FeaturedProjectsModal activeDemo={activeDemo} setActiveDemo={setActiveDemo} theme={theme}></FeaturedProjectsModal>}
             </section>
 
             <section className="max-w-250 mx-auto py-16 px-8" id="skills">
@@ -406,7 +408,7 @@ export default function PortfolioApp() {
                                 {isPhone && (
                                     <>
                                         <p className="text-(--accent)">{category.phone}</p>
-                                        <p className="text-(--txt-muted-color) text-xs">[Note: Best for urgent matters.]</p>
+                                        <p className="text-(--txt-muted-color) text-xs">[Note: For urgent matters.]</p>
                                     </>
                                 )}
                                 {isFacebook && <a href="https://www.facebook.com/ayezza.margaux" target="_blank" rel="noopener noreferrer" className="max-w-full text-sm break-all inline-block">[<span className="text-(--accent)">https://www.facebook.com/ayezza.margaux</span>]</a>}
