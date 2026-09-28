@@ -47,27 +47,35 @@ const LovKey = "/slides/LovKey";
 const DevPortfolio = "/slides/DevPortfolio";
 
 const PROJECTS_slides = {
-    RetroCalc: [`${RetroCalc}/slide-1.png`, `${RetroCalc}/slide-2.png`, `${RetroCalc}/slide-3.png`, `${RetroCalc}/slide-4.png`, `${RetroCalc}/slide-5.png`],
-    LovKey: [`${LovKey}/slide-1.png`, `${LovKey}/slide-2.png`, `${LovKey}/slide-3.png`, `${LovKey}/slide-4.png`, `${LovKey}/slide-5.png`],
-    DevPortfolio: [`${DevPortfolio}/slide-1.png`, `${DevPortfolio}/slide-2.png`, `${DevPortfolio}/slide-3.png`, `${DevPortfolio}/slide-4.png`, `${DevPortfolio}/slide-5.png`]
+    RetroCalc: [`${RetroCalc}/slide-1.png`, `${RetroCalc}/slide-2.png`, `${RetroCalc}/slide-3.png`, `${RetroCalc}/slide-4.png`, `${RetroCalc}/slide-5.png`, `${RetroCalc}/slide-6.png`],
+    LovKey: [`${LovKey}/slide-1.png`, `${LovKey}/slide-2.png`, `${LovKey}/slide-3.png`, `${LovKey}/slide-4.png`, `${LovKey}/slide-5.png`, `${LovKey}/slide-6.png`, `${LovKey}/slide-7.png`],
+    DevPortfolio: [`${DevPortfolio}/slide-1.png`, `${DevPortfolio}/slide-2.png`, `${DevPortfolio}/slide-3.png`, `${DevPortfolio}/slide-4.png`, `${DevPortfolio}/slide-5.png`, `${DevPortfolio}/slide-6.png`, `${DevPortfolio}/slide-7.png`, `${DevPortfolio}/slide-8.png`, `${DevPortfolio}/slide-9.png`, `${DevPortfolio}/slide-10.png`]
 };
 
 const PROJECTS_descriptions = {
     RetroCalc: [
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo."
+        "This is the RetroCalc app icon, featuring a custom 3D mechanical keycap design that sets the playful aesthetic of the project.",
+        "This screen displays the main calculator interface, complete with an active math expression display and quick utility controls.",
+        "This module enables users to switch visual themes on the fly, offering options like Default, Retro, and Candy modes in both light and dark variations.",
+        "This feature lets users select custom mechanical keyboard audio feedback, choosing sound profiles like \"Clicky,\" \"Thocky,\" or \"Creamy\" for keypresses.",
+        "This preview shows the calculator interface styled in the Retro Light theme with muted vintage keycaps.",
+        "This preview showcases the high-contrast Candy Dark theme, optimized for dark mode with pastel accent colors."
     ],
     LovKey: [
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo."
+        "This is the LovKey app icon, featuring a custom golden key and heart emblem that defines the romantic theme of the application.",
+        "This screen serves as the main landing UI, featuring a sealed interactive wax-stamped envelope and quick options to compose or share a letter.",
+        "This modal allows creators to compose a personalized message, set up custom quiz riddles, and optionally upload a photo attachment.",
+        "This step enables creators to define multiple-choice answers for their custom riddle and set the correct key to unlock the note.",
+        "This interactive challenge modal prompts recipients to solve a personalized riddle and select the correct answer to unlock the hidden message.",
+        "This view reveals the unlocked digital love letter written by the sender, complete with floating background particle effects.",
+        "This view presents the optional photo attachment formatted as a classic Polaroid picture frame alongside the message content."
     ],
     DevPortfolio: [
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
+        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
@@ -146,7 +154,7 @@ function FeaturedProjectsModal({ activeDemo, setActiveDemo, theme }) {
     return (
         <dialog ref={dialogRef} onCancel={() => setActiveDemo(null)} onClick={handleBackdropClick} className="bg-(--cntnr-color)/40 w-full max-w-sm min-[575px]:max-w-lg min-[640px]:max-w-xl min-[730px]:max-w-2xl min-[830px]:max-w-3xl min-[960px]:max-w-4xl max-h-[80vh] m-auto rounded-xl backdrop:bg-black/60 backdrop:backdrop-blur-sm">
             <div className="flex flex-col gap-5">
-                <header className="px-5 py-3 flex justify-between items-center">
+                <header className="px-5 pt-3 flex justify-between items-center">
                     <h2 className={`${theme === "dark" ? "text-(--accent)" : "text-gray-800"} text-xl font-bold`}>{activeDemo}</h2>
                     <button onClick={() => setActiveDemo(null)} aria-label="Close" className={`${theme === "dark" ? "text-(--txt-muted-color)" : "text-white"} px-2 text-lg font-bold rounded-md cursor-pointer`}><i className="fa-solid fa-xmark"></i></button>
                 </header>
