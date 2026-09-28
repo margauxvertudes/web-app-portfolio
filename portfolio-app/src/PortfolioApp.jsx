@@ -113,6 +113,13 @@ const CERTIFICATES = [
     "/certificates/certificate-4.jpg",
 ];
 
+const CERTIFICATES_descriptions = [
+    "This is a Certificate of Completion awarded for successfully finalizing all requirements for the 'Agile Workflow Optimization Project' (Issued: August 14, 2025).",
+    "This is an Award of Excellence in Coding presented in recognition of outstanding performance and contribution to high-quality code implementation (Issued: October 26, 2026).",
+    "This is a Certificate of Achievement acknowledging successful completion of the program in Advanced Cloud Architecture (Issued: March 10, 2026).",
+    "This is an Innovation & Problem Solving Award given for demonstrating exceptional creativity and problem-solving skills in software development challenges (Issued: June 02, 2026)."
+];
+
 const CONTACTS = [
     {
         email: "vertudesmargaux2003@gmail.com",
@@ -391,6 +398,10 @@ export default function PortfolioApp() {
                     </button>
 
                     {isCertActive && <CertificationsModal certIndex={certIndex} isCertActive={isCertActive} setIsCertActive={setIsCertActive} />}
+                </div>
+
+                <div className="bg-(--cntnr-color) mt-6 px-15 md:px-25 py-6 text-center border border-(--cntnr-border-color) rounded-xl">
+                    <p className="text-[0.55rem] sm:text-[0.9rem]">{CERTIFICATES_descriptions[certIndex]}</p>
                 </div>
             </section>
 
