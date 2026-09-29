@@ -9,7 +9,7 @@ const ABOUT = {
     name: "Margaux Ayezzalyne L. Vertudes",
     username: "Cha",
     position: "Frontend Developer",
-    profilePicture: "/profilePics/profile-picture-1.png",
+    profilePicture: "/profilePics/profile-picture-3.png",
     resume: "Resume_Vertudes.pdf",
     get title() { return `Hi, I'm ${this.username} — I build🔨 fast, responsive, and scalable web applications.`; },
     description: "I specialize in building easy-to-use interfaces, clean component architectures, and responsive web applications using React, Tailwind CSS, and Sass. My focus is on writing clean, maintainable code, keeping performance fast, and delivering smooth digital experiences from design to deployment."
@@ -269,7 +269,7 @@ function CertificationsModal({ certIndex, isCertActive, setIsCertActive }) {
 
 export default function PortfolioApp() {
     const savedTheme = localStorage.getItem("savedTheme");
-    const [theme, setTheme] = useState(savedTheme || "dark");
+    const [theme, setTheme] = useState(savedTheme || "light");
     const [activeDemo, setActiveDemo] = useState(null);
     const [isProjExtended, setIsProjExtended] = useState(false);
     const [activeSkill, setActiveSkill] = useState(null);

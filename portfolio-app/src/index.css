@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-.app.dark {
+/* .app.dark {
     --bg-color: #0f172a;
     --cntnr-color: #1e293b;
     --cntnr-border-color: #334155;
@@ -18,6 +18,27 @@
     --txt-muted-color: #64748b;
     --accent: #0284c7;
     --accent-hover: #0369a1;
+} */
+
+/* CHA'S STYLE */
+.app.dark {
+    --bg-color: #241b20;
+    --cntnr-color: #33272d;
+    --cntnr-border-color: #4d3b43;
+    --txt-main-color: #fff4f7;
+    --txt-muted-color: #cbb5bd;
+    --accent: #e89ab2;
+    --accent-hover: #d77d9a;
+}
+
+.app.light {
+    --bg-color: #fff7fa;
+    --cntnr-color: #ffffff;
+    --cntnr-border-color: #efdce3;
+    --txt-main-color: #38242b;
+    --txt-muted-color: #8c707a;
+    --accent: #d97998;
+    --accent-hover: #c65f81;
 }
 
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
