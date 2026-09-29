@@ -1,26 +1,5 @@
 @import "tailwindcss";
 
-/* .app.dark {
-    --bg-color: #0f172a;
-    --cntnr-color: #1e293b;
-    --cntnr-border-color: #334155;
-    --txt-main-color: #f8fafc;
-    --txt-muted-color: #94a3b8;
-    --accent: #38bdf8;
-    --accent-hover: #0284c7;
-}
-
-.app.light {
-    --bg-color: #f8fafc;
-    --cntnr-color: #ffffff;
-    --cntnr-border-color: #e2e8f0;
-    --txt-main-color: #0f172a;
-    --txt-muted-color: #64748b;
-    --accent: #0284c7;
-    --accent-hover: #0369a1;
-} */
-
-/* CHA'S STYLE */
 .app.dark {
     --bg-color: #241b20;
     --cntnr-color: #33272d;

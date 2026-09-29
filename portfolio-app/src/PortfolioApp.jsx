@@ -17,7 +17,7 @@ const ABOUT = {
 
 const RetroCalc = "/slides/RetroCalc";
 const LovKey = "/slides/LovKey";
-const DevPortfolio = "/slides/DevPortfolio";
+const MA_Codeworks = "/slides/MA_Codeworks";
 
 const PROJECTS = [
     {
@@ -39,9 +39,9 @@ const PROJECTS = [
         deployedUrl: "https://lovkey.vercel.app/"
     },
     {
-        id: "DevPortfolio",
-        icon: `${DevPortfolio}/slide-1.png`,
-        title: "DevPortfolio – My Personal Web App Portfolio",
+        id: "MA Codeworks",
+        icon: `${MA_Codeworks}/slide-1.png`,
+        title: "MA Codeworks – My Personal Web App Portfolio",
         description: "Responsive web app portfolio showcasing personal projects, technical skills, and interactive contact features.",
         tags: ["React", "JavaScript", "Vite", "Tailwind CSS", "CSS", "HTML"],
         githubUrl: "https://github.com/deyl-1999/portfolio-app.git",
@@ -50,13 +50,13 @@ const PROJECTS = [
 ];
 
 const PROJECTS_slides = {
-    RetroCalc: [`${RetroCalc}/slide-1.png`, `${RetroCalc}/slide-2.png`, `${RetroCalc}/slide-3.png`, `${RetroCalc}/slide-4.png`, `${RetroCalc}/slide-5.png`, `${RetroCalc}/slide-6.png`],
-    LovKey: [`${LovKey}/slide-1.png`, `${LovKey}/slide-2.png`, `${LovKey}/slide-3.png`, `${LovKey}/slide-4.png`, `${LovKey}/slide-5.png`, `${LovKey}/slide-6.png`, `${LovKey}/slide-7.png`],
-    DevPortfolio: [`${DevPortfolio}/slide-1.png`, `${DevPortfolio}/slide-2.png`, `${DevPortfolio}/slide-3.png`, `${DevPortfolio}/slide-4.png`, `${DevPortfolio}/slide-5.png`, `${DevPortfolio}/slide-6.png`, `${DevPortfolio}/slide-7.png`, `${DevPortfolio}/slide-8.png`, `${DevPortfolio}/slide-9.png`, `${DevPortfolio}/slide-10.png`]
+    "RetroCalc": [`${RetroCalc}/slide-1.png`, `${RetroCalc}/slide-2.png`, `${RetroCalc}/slide-3.png`, `${RetroCalc}/slide-4.png`, `${RetroCalc}/slide-5.png`, `${RetroCalc}/slide-6.png`],
+    "LovKey": [`${LovKey}/slide-1.png`, `${LovKey}/slide-2.png`, `${LovKey}/slide-3.png`, `${LovKey}/slide-4.png`, `${LovKey}/slide-5.png`, `${LovKey}/slide-6.png`, `${LovKey}/slide-7.png`],
+    "MA Codeworks": [`${MA_Codeworks}/slide-1.png`, `${MA_Codeworks}/slide-2.png`, `${MA_Codeworks}/slide-3.png`, `${MA_Codeworks}/slide-4.png`, `${MA_Codeworks}/slide-5.png`, `${MA_Codeworks}/slide-6.png`, `${MA_Codeworks}/slide-7.png`, `${MA_Codeworks}/slide-8.png`, `${MA_Codeworks}/slide-9.png`, `${MA_Codeworks}/slide-10.png`]
 };
 
 const PROJECTS_descriptions = {
-    RetroCalc: [
+    "RetroCalc": [
         "This is the RetroCalc app icon, featuring a custom 3D mechanical keycap design that sets the playful aesthetic of the project.",
         "This screen displays the main calculator interface, complete with an active math expression display and quick utility controls.",
         "This module enables users to switch visual themes on the fly, offering options like Default, Retro, and Candy modes in both light and dark variations.",
@@ -64,7 +64,7 @@ const PROJECTS_descriptions = {
         "This preview shows the calculator interface styled in the Retro Light theme with muted vintage keycaps.",
         "This preview showcases the high-contrast Candy Dark theme, optimized for dark mode with pastel accent colors."
     ],
-    LovKey: [
+    "LovKey": [
         "This is the LovKey app icon, featuring a custom golden key and heart emblem that defines the romantic theme of the application.",
         "This screen serves as the main landing UI, featuring a sealed interactive wax-stamped envelope and quick options to compose or share a letter.",
         "This modal allows creators to compose a personalized message, set up custom quiz riddles, and optionally upload a photo attachment.",
@@ -73,7 +73,7 @@ const PROJECTS_descriptions = {
         "This view reveals the unlocked digital love letter written by the sender, complete with floating background particle effects.",
         "This view presents the optional photo attachment formatted as a classic Polaroid picture frame alongside the message content."
     ],
-    DevPortfolio: [
+    "MA Codeworks": [
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
@@ -295,7 +295,7 @@ export default function PortfolioApp() {
     return (
         <div className={`app ${theme} bg-(--bg-color) text-(--txt-main-color) min-h-screen transition-colors duration-300`}>
             <nav className="bg-(--bg-color) py-5 px-8 border-b border-(--cntnr-border-color) flex justify-between items-center sticky top-0">
-                <div className="text-(--accent) font-bold text-xs min-[525px]:text-lg sm:text-xl"><p><a href="./App.jsx">&lt;DevPortfolio /&gt;</a></p></div>
+                <div className="text-(--accent) font-bold text-xs min-[525px]:text-lg sm:text-xl"><p><a href="./App.jsx">&lt;MA Codeworks /&gt;</a></p></div>
 
                 <div className="text-[0.75rem] sm:text-[1rem] flex items-center gap-[0.6rem] sm:gap-6">
                     {NAVIGATIONS.map((nav) => (
