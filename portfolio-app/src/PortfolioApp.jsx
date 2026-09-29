@@ -15,9 +15,14 @@ const ABOUT = {
     description: "I specialize in building easy-to-use interfaces, clean component architectures, and responsive web applications using React, Tailwind CSS, and Sass. My focus is on writing clean, maintainable code, keeping performance fast, and delivering smooth digital experiences from design to deployment."
 };
 
+const RetroCalc = "/slides/RetroCalc";
+const LovKey = "/slides/LovKey";
+const DevPortfolio = "/slides/DevPortfolio";
+
 const PROJECTS = [
     {
         id: "RetroCalc",
+        icon: `${RetroCalc}/slide-1.png`,
         title: "RetroCalc – Retro Themed Web Calculator",
         description: "Retro-themed web calculator with keyboard support, persistent user themes, and custom audio feedback.",
         tags: ["JavaScript", "CSS / Sass", "LocalStorage", "Caching", "Web API", "HTML"],
@@ -26,6 +31,7 @@ const PROJECTS = [
     },
     {
         id: "LovKey",
+        icon: `${LovKey}/slide-1.png`,
         title: "LovKey – Quiz-Locked Digital Love Letter App",
         description: "Digital love letter app featuring custom riddle-locked access, photo attachments, and shareable links.",
         tags: ["JavaScript", "CSS / Sass", "URL Parameter", "Cloud Image Hosting", "Web API", "HTML"],
@@ -34,6 +40,7 @@ const PROJECTS = [
     },
     {
         id: "DevPortfolio",
+        icon: `${DevPortfolio}/slide-1.png`,
         title: "DevPortfolio – My Personal Web App Portfolio",
         description: "Responsive web app portfolio showcasing personal projects, technical skills, and interactive contact features.",
         tags: ["React", "JavaScript", "Vite", "Tailwind CSS", "CSS", "HTML"],
@@ -41,10 +48,6 @@ const PROJECTS = [
         deployedUrl: "#"
     }
 ];
-
-const RetroCalc = "/slides/RetroCalc";
-const LovKey = "/slides/LovKey";
-const DevPortfolio = "/slides/DevPortfolio";
 
 const PROJECTS_slides = {
     RetroCalc: [`${RetroCalc}/slide-1.png`, `${RetroCalc}/slide-2.png`, `${RetroCalc}/slide-3.png`, `${RetroCalc}/slide-4.png`, `${RetroCalc}/slide-5.png`, `${RetroCalc}/slide-6.png`],
@@ -338,7 +341,11 @@ export default function PortfolioApp() {
 
                         return (
                             <div key={project.id} className="bg-(--cntnr-color) p-6 border border-(--cntnr-border-color) rounded-xl flex flex-col">
-                                <h3 className="mb-2">{project.title}</h3>
+                                <div className="mb-2 flex items-center gap-1">
+                                    <img src={(project.icon && project.icon !== "#") ? project.icon : "/default-icon.png"} alt="Application's Icon" className="w-12 h-12" />
+                                    <h3>{project.title}</h3>
+                                </div>
+
                                 <p className="text-(--txt-muted-color) mb-5 text-[0.95rem]/[1.5] grow">{project.description}</p>
 
                                 <div className="mb-5 flex flex-wrap gap-2">
