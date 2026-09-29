@@ -268,6 +268,7 @@ export default function PortfolioApp() {
     const savedTheme = localStorage.getItem("savedTheme");
     const [theme, setTheme] = useState(savedTheme || "dark");
     const [activeDemo, setActiveDemo] = useState(null);
+    const [isProjExtended, setIsProjExtended] = useState(false);
     const [activeSkill, setActiveSkill] = useState(null);
     const [certIndex, setCertIndex] = useState(0);
     const [isCertActive, setIsCertActive] = useState(false);
@@ -332,7 +333,7 @@ export default function PortfolioApp() {
                 <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Featured Projects</h2>
 
                 <div className="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-6">
-                    {PROJECTS.map((project) => {
+                    {(isProjExtended ? PROJECTS : PROJECTS.slice(0, 3)).map((project) => {
                         const isDeployed = Boolean(project.deployedUrl && project.deployedUrl !== "#");
 
                         return (
@@ -354,6 +355,16 @@ export default function PortfolioApp() {
                             </div>
                         );
                     })}
+                </div>
+
+                <div className="mt-5 flex justify-end items-center">
+                    {PROJECTS.length > 3 && (
+                        isProjExtended ? (
+                            <a href="#projects" onClick={() => setIsProjExtended(false)} className="text-(--accent) text-[0.9rem] font-semibold">Show Less</a>
+                        ) : (
+                            <a href="#projects" onClick={() => setIsProjExtended(true)} className="text-(--accent) text-[0.9rem] font-semibold">Show More &rarr;</a>
+                        )
+                    )}
                 </div>
 
                 {activeDemo && <FeaturedProjectsModal activeDemo={activeDemo} setActiveDemo={setActiveDemo} theme={theme} />}
