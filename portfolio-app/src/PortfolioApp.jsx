@@ -7,12 +7,12 @@ const NAVIGATIONS = ["About", "Projects", "Skills", "Contacts"];
 
 const ABOUT = {
     name: "Margaux Ayezzalyne L. Vertudes",
-    username: "Cha",
-    position: "Frontend Developer",
+    username: "Margaux",
+    position: "ML Engineer",
     profilePicture: "/profilePics/profile-picture-3.png",
     resume: "Resume_Vertudes.pdf",
-    get title() { return `Hi, I'm ${this.username} — I build🔨 fast, responsive, and scalable web applications.`; },
-    description: "I specialize in building easy-to-use interfaces, clean component architectures, and responsive web applications using React, Tailwind CSS, and Sass. My focus is on writing clean, maintainable code, keeping performance fast, and delivering smooth digital experiences from design to deployment."
+    get title() { return `Hi, I'm ${this.username} — I build 🤖 intelligent systems powered by machine learning.`; },
+    description: "I specialize in developing and integrating machine learning solutions into modern applications. I work across data processing, model development, API integration, and deployment, with a focus on writing clean, maintainable code and building efficient, scalable AI-powered systems."
 };
 
 const RetroCalc = "/slides/RetroCalc";
