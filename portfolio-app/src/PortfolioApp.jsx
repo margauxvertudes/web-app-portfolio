@@ -88,40 +88,40 @@ const PROJECTS_descriptions = {
 };
 
 const SKILLS = {
-    Languages: ["React", "JavaScript (ES6+)", "Tailwind CSS", "Sass", "CSS3", "HTML5", "PostgreSQL", "MySQL"],
-    Concepts: ["State Management", "Async/Await", "DOM Manipulation", "Event Delegation", "DOM Caching", "LocalStorage", "Cloud Media Hosting", "Progressive Web Apps (PWA)", "Offline Caching", "Responsive Design", "Web Accessibility (a11y)", "SEO Optimization", "Performance Optimization"],
-    Tools: ["ChatGPT", "Gemini", "Git / GitHub", "VS Code", "Chrome DevTools", "Responsively App"]
+    Languages: ["HTML5", "CSS3", "Python", "C++", "Java", "PHP", "MySQL"],
+    Concepts: ["Data Structures & Algorithms", "Statistics & Probability", "Data Preprocessing", "Exploratory Data Analysis", "Feature Engineering", "Machine Learning Algorithms", "Supervised Learning", "Model Training", "Model Evaluation", "Hyperparameter Tuning", "Neural Networks", "Convolutional Neural Networks (CNN)", "Model Deployment"],
+    Tools: ["ChatGPT", "Git / GitHub", "VS Code", "Chrome DevTools", "WordPress"]
 };
 
 const SKILLS_descriptions = {
-    "State Management": "Tracking and controlling application data as it changes over time to ensure the user interface accurately reflects the current state across different components.",
-    "Async/Await": "Syntactic sugar built on JavaScript Promises that lets you write asynchronous code in a clean, synchronous-looking style using async and await.",
-    "DOM Manipulation": "Using JavaScript to dynamically read, modify, add, or delete elements, attributes, and styles within a web page's Document Object Model.",
-    "Event Delegation": "A performance pattern where a single event listener is attached to a parent element to handle events triggered by present or future child elements via event bubbling.",
-    "DOM Caching": "Storing references to frequently accessed DOM elements in JavaScript variables to prevent expensive, repeated searches through the document tree.",
-    "LocalStorage": "A key-value browser storage API that saves up to 5–10MB of persistent, text-based data per domain with no expiration date.",
-    "Cloud Media Hosting": "Storing and serving media assets (images, videos, audio) on remote cloud infrastructure optimized for fast delivery, transformation, and scalability.",
-    "Progressive Web Apps (PWA)": "Web applications that leverage modern APIs, service workers, and web app manifests to deliver native-app-like features such as push notifications and offline access.",
-    "Offline Caching": "Storing essential assets and network responses locally (typically using Service Workers and the Cache API) so a web app remains functional without internet connectivity.",
-    "Responsive Design": "An approach using flexible layouts, fluid images, and CSS media queries to ensure web content automatically adapts cleanly to any screen size or device type.",
-    "Web Accessibility (a11y)": "Designing and building web applications so people with disabilities—including visual, auditory, motor, or cognitive impairments—can navigate and interact with them effectively.",
-    "SEO Optimization": "Structuring and refining web pages, content, and metadata to improve their visibility and ranking in search engine results pages.",
-    "Performance Optimization": "A set of techniques—like minification, lazy loading, and code splitting—used to decrease page load times and improve interaction speed and smoothness."
+    "Data Structures & Algorithms": "Basic methods for organizing data and solving problems efficiently using structures like arrays, lists, stacks, queues, and algorithms.",
+    "Statistics & Probability": "Using basic statistical and probability concepts to understand data, identify patterns, and support machine learning decisions.",
+    "Data Preprocessing": "Cleaning, transforming, and preparing raw data so it can be properly used to train a machine learning model.",
+    "Exploratory Data Analysis": "Examining and visualizing data to understand its patterns, relationships, distributions, and possible issues before building a machine learning model.",
+    "Feature Engineering": "Creating, selecting, or transforming input features to help a machine learning model learn useful patterns from data.",
+    "Machine Learning Algorithms": "Methods used to allow computers to learn patterns from data and make predictions or decisions without being explicitly programmed for every case.",
+    "Supervised Learning": "A type of machine learning where a model learns from labeled data to predict an output or classify new data.",
+    "Model Training": "The process of teaching a machine learning model by providing training data and adjusting its parameters to learn patterns.",
+    "Model Evaluation": "Measuring how well a trained machine learning model performs using appropriate evaluation metrics and test data.",
+    "Hyperparameter Tuning": "Adjusting settings such as learning rate, number of trees, or batch size to improve a machine learning model's performance.",
+    "Neural Networks": "Machine learning models made of interconnected layers of nodes that learn patterns from data and can be used for tasks such as classification and prediction.",
+    "Convolutional Neural Networks (CNN)": "A type of neural network designed mainly for processing images and visual data by learning features such as edges, shapes, and patterns.",
+    "Model Deployment": "The process of making a trained machine learning model available for use in a real application or system."
 };
 
-const CERTIFICATES = [
-    "/certificates/certificate-1.jpg",
-    "/certificates/certificate-2.jpg",
-    "/certificates/certificate-3.jpg",
-    "/certificates/certificate-4.jpg",
-];
+// const CERTIFICATES = [
+//     "/certificates/certificate-1.jpg",
+//     "/certificates/certificate-2.jpg",
+//     "/certificates/certificate-3.jpg",
+//     "/certificates/certificate-4.jpg",
+// ];
 
-const CERTIFICATES_descriptions = [
-    "This is a Certificate of Completion awarded for successfully finalizing all requirements for the 'Agile Workflow Optimization Project' (Issued: August 14, 2025).",
-    "This is an Award of Excellence in Coding presented in recognition of outstanding performance and contribution to high-quality code implementation (Issued: October 26, 2026).",
-    "This is a Certificate of Achievement acknowledging successful completion of the program in Advanced Cloud Architecture (Issued: March 10, 2026).",
-    "This is an Innovation & Problem Solving Award given for demonstrating exceptional creativity and problem-solving skills in software development challenges (Issued: June 02, 2026)."
-];
+// const CERTIFICATES_descriptions = [
+//     "This is a Certificate of Completion awarded for successfully finalizing all requirements for the 'Agile Workflow Optimization Project' (Issued: August 14, 2025).",
+//     "This is an Award of Excellence in Coding presented in recognition of outstanding performance and contribution to high-quality code implementation (Issued: October 26, 2026).",
+//     "This is a Certificate of Achievement acknowledging successful completion of the program in Advanced Cloud Architecture (Issued: March 10, 2026).",
+//     "This is an Innovation & Problem Solving Award given for demonstrating exceptional creativity and problem-solving skills in software development challenges (Issued: June 02, 2026)."
+// ];
 
 const CONTACTS = [
     {
@@ -253,19 +253,19 @@ function DynamicToolTip({ description, children }) {
     );
 }
 
-function CertificationsModal({ certIndex, isCertActive, setIsCertActive }) {
-    const dialogRef = useRef(null);
+// function CertificationsModal({ certIndex, isCertActive, setIsCertActive }) {
+//     const dialogRef = useRef(null);
 
-    useEffect(() => {
-        if (dialogRef.current && isCertActive) dialogRef.current.showModal();
-    }, [isCertActive]);
+//     useEffect(() => {
+//         if (dialogRef.current && isCertActive) dialogRef.current.showModal();
+//     }, [isCertActive]);
 
-    return (
-        <dialog ref={dialogRef} onCancel={() => setIsCertActive(false)} onClick={() => setIsCertActive(false)} className="bg-transparent w-[90vw] max-w-250 max-h-[90vh] m-auto p-0 border-none outline-none flex justify-center items-center backdrop:bg-black/60 backdrop:backdrop-blur-sm">
-            <img src={CERTIFICATES[certIndex]} alt="Developer's Certificate" className="max-w-full max-h-full w-auto h-auto rounded-md cursor-pointer object-contain" />
-        </dialog>
-    );
-}
+//     return (
+//         <dialog ref={dialogRef} onCancel={() => setIsCertActive(false)} onClick={() => setIsCertActive(false)} className="bg-transparent w-[90vw] max-w-250 max-h-[90vh] m-auto p-0 border-none outline-none flex justify-center items-center backdrop:bg-black/60 backdrop:backdrop-blur-sm">
+//             <img src={CERTIFICATES[certIndex]} alt="Developer's Certificate" className="max-w-full max-h-full w-auto h-auto rounded-md cursor-pointer object-contain" />
+//         </dialog>
+//     );
+// }
 
 export default function PortfolioApp() {
     const savedTheme = localStorage.getItem("savedTheme");
@@ -273,20 +273,20 @@ export default function PortfolioApp() {
     const [activeDemo, setActiveDemo] = useState(null);
     const [isProjExtended, setIsProjExtended] = useState(false);
     const [activeSkill, setActiveSkill] = useState(null);
-    const [certIndex, setCertIndex] = useState(0);
-    const [isCertActive, setIsCertActive] = useState(false);
+    // const [certIndex, setCertIndex] = useState(0);
+    // const [isCertActive, setIsCertActive] = useState(false);
 
     function toggleTheme() {
         setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
     }
 
-    function handleArrowLeft() {
-        if (certIndex > 0) setCertIndex((prevCertIndex) => prevCertIndex - 1);
-    }
+    // function handleArrowLeft() {
+    //     if (certIndex > 0) setCertIndex((prevCertIndex) => prevCertIndex - 1);
+    // }
 
-    function handleArrowRight() {
-        if (certIndex < CERTIFICATES.length - 1) setCertIndex((prevCertIndex) => prevCertIndex + 1);
-    }
+    // function handleArrowRight() {
+    //     if (certIndex < CERTIFICATES.length - 1) setCertIndex((prevCertIndex) => prevCertIndex + 1);
+    // }
 
     useEffect(() => {
         localStorage.setItem("savedTheme", theme);
@@ -391,7 +391,7 @@ export default function PortfolioApp() {
                                 ))}
                             </ul>
 
-                            <a href="#skills" onClick={() => setActiveSkill(category)} className="text-(--accent) mt-3 text-[0.9rem] font-semibold inline-block">Show More &rarr;</a>
+                            {items.length > 5 && <a href="#skills" onClick={() => setActiveSkill(category)} className="text-(--accent) mt-3 text-[0.9rem] font-semibold inline-block">Show More &rarr;</a>}
                         </div>
                     ))}
                 </div>
@@ -399,7 +399,7 @@ export default function PortfolioApp() {
                 {activeSkill && <TechnicalSkillsModal activeSkill={activeSkill} setActiveSkill={setActiveSkill} />}
             </section>
 
-            <section className="max-w-250 mx-auto py-16 px-8" id="certificates">
+            {/* <section className="max-w-250 mx-auto py-16 px-8" id="certificates">
                 <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Certifications</h2>
 
                 <div className="flex justify-center items-center gap-2 sm:gap-4">
@@ -421,7 +421,7 @@ export default function PortfolioApp() {
                 <div className="bg-(--cntnr-color) mt-6 px-15 md:px-25 py-6 text-center border border-(--cntnr-border-color) rounded-xl">
                     <p className="text-[0.55rem] sm:text-[0.9rem]">{CERTIFICATES_descriptions[certIndex]}</p>
                 </div>
-            </section>
+            </section> */}
 
             <section className="max-w-250 mx-auto py-16 px-8" id="contacts">
                 <h2 className="mb-6 md:mb-8 pb-2 text-2xl border-b-2 border-(--cntnr-border-color)">Get In Touch</h2>
