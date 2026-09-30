@@ -90,7 +90,7 @@ const PROJECTS_descriptions = {
 const SKILLS = {
     Languages: ["HTML5", "CSS3", "Python", "C++", "Java", "PHP", "MySQL"],
     Concepts: ["Data Structures & Algorithms", "Statistics & Probability", "Data Preprocessing", "Exploratory Data Analysis", "Feature Engineering", "Machine Learning Algorithms", "Supervised Learning", "Model Training", "Model Evaluation", "Hyperparameter Tuning", "Neural Networks", "Convolutional Neural Networks (CNN)", "Model Deployment"],
-    Tools: ["ChatGPT", "Git / GitHub", "VS Code", "Chrome DevTools", "WordPress"]
+    Tools: ["ChatGPT", "Git / GitHub", "VS Code", "Chrome DevTools", "WordPress", "TensorFlow", "Keras", "PyTorch", "Android Studio"]
 };
 
 const SKILLS_descriptions = {
