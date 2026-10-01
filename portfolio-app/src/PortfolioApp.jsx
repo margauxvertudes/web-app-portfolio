@@ -15,28 +15,28 @@ const ABOUT = {
     description: "I specialize in developing and integrating machine learning solutions into modern applications. I work across data processing, model development, API integration, and deployment, with a focus on writing clean, maintainable code and building efficient, scalable AI-powered systems."
 };
 
-const RetroCalc = "/slides/RetroCalc";
-const LovKey = "/slides/LovKey";
+const Pineapple_App = "/slides/Pineapple_App";
+const Golf_Club = "/slides/Golf_Club";
 const MA_Codeworks = "/slides/MA_Codeworks";
 
 const PROJECTS = [
     {
-        id: "RetroCalc",
-        icon: `${RetroCalc}/slide-1.png`,
-        title: "RetroCalc – Retro Themed Web Calculator",
-        description: "Retro-themed web calculator with keyboard support, persistent user themes, and custom audio feedback.",
-        tags: ["JavaScript", "CSS / Sass", "LocalStorage", "Caching", "Web API", "HTML"],
-        githubUrl: "https://github.com/deyl-1999/retro-calculator.git",
-        deployedUrl: "https://retro-calc.vercel.app/"
+        id: "Pineapple App",
+        icon: `${Pineapple_App}/slide-1.png`,
+        title: "Pineapple Disease and Monitoring App",
+        description: "Mobile application powered by a Convolutional Neural Network (CNN) to identify pineapple leaf diseases and monitor plant health through image capture or upload.",
+        tags: ["Python", "CNN", "Deep Learning", "Computer Vision", "TensorFlow", "Mobile App"],
+        githubUrl: "https://github.com/margauxvertudes/CNN-based-Pineapple-Disease-Identification-",
+        deployedUrl: "https://drive.google.com/file/d/16nwsQU_r73czpxlwbxIVNIGRNDSSO1Xq/view?fbclid=IwY2xjawTf8TpleHRuA2FlbQMxMDAAc3J0YwZhcHBfaWQMMzUwNjg1NTMxNzI4AAEeE7_GoChnexfKN9-uunlS-THxdbE0YHq0a1ZvJWMuO1n5f8eW-3RIuGkcvp0_aem_vNTzBqC8QgK3DggUlummFg"
     },
     {
-        id: "LovKey",
-        icon: `${LovKey}/slide-1.png`,
-        title: "LovKey – Quiz-Locked Digital Love Letter App",
-        description: "Digital love letter app featuring custom riddle-locked access, photo attachments, and shareable links.",
-        tags: ["JavaScript", "CSS / Sass", "URL Parameter", "Cloud Image Hosting", "Web API", "HTML"],
-        githubUrl: "https://github.com/deyl-1999/love-letter.git",
-        deployedUrl: "https://lovkey.vercel.app/"
+        id: "Golf Club",
+        icon: `${Golf_Club}/slide-1.png`,
+        title: "Palm Fairway Club | Experience Golf and More!",
+        description: "Official web application for Palm Fairway Club featuring online tee time reservations, amenity showcases, dining menus, and event updates.",
+        tags: ["WordPress", "Elementor", "Responsiveness", "Plugin Management", "Web Maintenance"],
+        githubUrl: "https://github.com/margauxvertudes/Palm-Fairway-Club",
+        deployedUrl: "https://palmfairway.com.ph/"
     },
     {
         id: "MA Codeworks",
@@ -50,28 +50,31 @@ const PROJECTS = [
 ];
 
 const PROJECTS_slides = {
-    "RetroCalc": [`${RetroCalc}/slide-1.png`, `${RetroCalc}/slide-2.png`, `${RetroCalc}/slide-3.png`, `${RetroCalc}/slide-4.png`, `${RetroCalc}/slide-5.png`, `${RetroCalc}/slide-6.png`],
-    "LovKey": [`${LovKey}/slide-1.png`, `${LovKey}/slide-2.png`, `${LovKey}/slide-3.png`, `${LovKey}/slide-4.png`, `${LovKey}/slide-5.png`, `${LovKey}/slide-6.png`, `${LovKey}/slide-7.png`],
+    "Pineapple App": [`${Pineapple_App}/slide-1.png`, `${Pineapple_App}/slide-2.jpg`, `${Pineapple_App}/slide-3.jpg`, `${Pineapple_App}/slide-4.jpg`, `${Pineapple_App}/slide-5.jpg`, `${Pineapple_App}/slide-6.jpg`],
+    "Golf Club": [`${Golf_Club}/slide-1.png`, `${Golf_Club}/slide-2.png`, `${Golf_Club}/slide-3.png`, `${Golf_Club}/slide-4.png`, `${Golf_Club}/slide-5.png`, `${Golf_Club}/slide-6.png`, `${Golf_Club}/slide-7.png`, `${Golf_Club}/slide-8.png`, `${Golf_Club}/slide-9.png`, `${Golf_Club}/slide-10.png`],
     "MA Codeworks": [`${MA_Codeworks}/slide-1.png`, `${MA_Codeworks}/slide-2.png`, `${MA_Codeworks}/slide-3.png`, `${MA_Codeworks}/slide-4.png`, `${MA_Codeworks}/slide-5.png`, `${MA_Codeworks}/slide-6.png`, `${MA_Codeworks}/slide-7.png`, `${MA_Codeworks}/slide-8.png`, `${MA_Codeworks}/slide-9.png`, `${MA_Codeworks}/slide-10.png`]
 };
 
 const PROJECTS_descriptions = {
-    "RetroCalc": [
-        "This is the RetroCalc app icon, featuring a custom 3D mechanical keycap design that sets the playful aesthetic of the project.",
-        "This screen displays the main calculator interface, complete with an active math expression display and quick utility controls.",
-        "This module enables users to switch visual themes on the fly, offering options like Default, Retro, and Candy modes in both light and dark variations.",
-        "This feature lets users select custom mechanical keyboard audio feedback, choosing sound profiles like \"Clicky,\" \"Thocky,\" or \"Creamy\" for keypresses.",
-        "This preview shows the calculator interface styled in the Retro Light theme with muted vintage keycaps.",
-        "This preview showcases the high-contrast Candy Dark theme, optimized for dark mode with pastel accent colors."
+    "Pineapple App": [
+        "This is the official app icon, featuring a vibrant, rounded pineapple illustration set against a soft pastel blue background.",
+        "This screen displays the main home dashboard, featuring quick-action buttons for capturing or uploading leaf images and accessing saved folders.",
+        "This drawer menu provides quick navigation across the application, allowing users to easily access the About page, Tutorial guide, or exit the app.",
+        "This page details the project overview and research background, highlighting its CNN-powered disease detection capabilities and academic credits from Cavite State University.",
+        "This step-by-step tutorial guides users through capturing or uploading pineapple leaf photos, analyzing results, and tracking plant health over time.",
+        "This module enables users to browse and organize saved plant folders, allowing farmers to monitor disease progression and plant health history over time."
     ],
-    "LovKey": [
-        "This is the LovKey app icon, featuring a custom golden key and heart emblem that defines the romantic theme of the application.",
-        "This screen serves as the main landing UI, featuring a sealed interactive wax-stamped envelope and quick options to compose or share a letter.",
-        "This modal allows creators to compose a personalized message, set up custom quiz riddles, and optionally upload a photo attachment.",
-        "This step enables creators to define multiple-choice answers for their custom riddle and set the correct key to unlock the note.",
-        "This interactive challenge modal prompts recipients to solve a personalized riddle and select the correct answer to unlock the hidden message.",
-        "This view reveals the unlocked digital love letter written by the sender, complete with floating background particle effects.",
-        "This view presents the optional photo attachment formatted as a classic Polaroid picture frame alongside the message content."
+    "Golf Club": [
+        "This is the official Palm Fairway Club app logo, featuring an emblem with a white palm tree silhouette inside a green circular border.",
+        "This hero section welcomes visitors to the home page with full-width driving range imagery and a clear 'Book a Tee Time' call to action.",
+        "This section showcases the state-of-the-art driving range amenities, inviting golf enthusiasts to refine their skills in a premier setting.",
+        "This menu view displays delicious entrée offerings like Bacsilog, Longsilog, and Cornsilog available at the club's resto-bar.",
+        "This showcase presents the Srixon Pro Shop, highlighting premium golf gear, equipment, and apparel available on-site.",
+        "This section details professional coaching programs and video lessons led by certified teaching pros for players of all skill levels.",
+        "This page highlights upcoming club events and competitive tournaments designed to foster sportsmanship and community.",
+        "This interactive reservation form allows guests to select service types, enter contact details, and book tee times in a few simple steps.",
+        "This contact page displays location details, phone numbers, email info, and operating hours for both the golf range and restaurant.",
+        "This introduction section outlines the club's mission, values, and facilities, welcoming guests to the Palm Fairway community."
     ],
     "MA Codeworks": [
         "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
@@ -341,7 +344,7 @@ export default function PortfolioApp() {
 
                         return (
                             <div key={project.id} className="bg-(--cntnr-color) p-6 border border-(--cntnr-border-color) rounded-xl flex flex-col">
-                                <div className="mb-2 flex items-center gap-1">
+                                <div className="mb-2 flex items-center gap-2">
                                     <img src={(project.icon && project.icon !== "#") ? project.icon : "/default-icon.png"} alt="Application's Icon" className="w-12 h-12" />
                                     <h3>{project.title}</h3>
                                 </div>
