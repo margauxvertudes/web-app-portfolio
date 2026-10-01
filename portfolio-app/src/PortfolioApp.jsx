@@ -298,7 +298,7 @@ export default function PortfolioApp() {
     return (
         <div className={`app ${theme} bg-(--bg-color) text-(--txt-main-color) min-h-screen transition-colors duration-300`}>
             <nav className="bg-(--bg-color) py-5 px-8 border-b border-(--cntnr-border-color) flex justify-between items-center sticky top-0">
-                <div className="text-(--accent) font-bold text-xs min-[525px]:text-lg sm:text-xl"><p><a href="./App.jsx">&lt;MA Codeworks /&gt;</a></p></div>
+                <div className="text-(--accent) font-bold text-xs min-[525px]:text-lg sm:text-xl"><p><a href="./PortfolioApp.jsx">&lt;MA Codeworks /&gt;</a></p></div>
 
                 <div className="text-[0.75rem] sm:text-[1rem] flex items-center gap-[0.6rem] sm:gap-6">
                     {NAVIGATIONS.map((nav) => (
