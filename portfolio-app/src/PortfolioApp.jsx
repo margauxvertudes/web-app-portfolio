@@ -17,7 +17,7 @@ const ABOUT = {
 
 const Pineapple_App = "/slides/Pineapple_App";
 const Golf_Club = "/slides/Golf_Club";
-const MA_Codeworks = "/slides/MA_Codeworks";
+const Library_App = "/slides/Library_App";
 
 const PROJECTS = [
     {
@@ -39,12 +39,12 @@ const PROJECTS = [
         deployedUrl: "https://palmfairway.com.ph/"
     },
     {
-        id: "MA Codeworks",
-        icon: `${MA_Codeworks}/slide-1.png`,
-        title: "MA Codeworks – My Personal Web App Portfolio",
-        description: "Responsive web app portfolio showcasing personal projects, technical skills, and interactive contact features.",
-        tags: ["React", "JavaScript", "Vite", "Tailwind CSS", "CSS", "HTML"],
-        githubUrl: "https://github.com/deyl-1999/portfolio-app.git",
+        id: "Library App",
+        icon: `${Library_App}/slide-1.png`,
+        title: "Library Room Reserve – Reserve Your Workspace",
+        description: "Web-based library room reservation system featuring user authentication, study space booking, user profile management, and an admin dashboard.",
+        tags: ["PHP", "MySQL", "Database Management", "JavaScript", "CSS", "HTML"],
+        githubUrl: "https://github.com/margauxvertudes/Online-Library-Reservation-System",
         deployedUrl: "#"
     }
 ];
@@ -52,7 +52,7 @@ const PROJECTS = [
 const PROJECTS_slides = {
     "Pineapple App": [`${Pineapple_App}/slide-1.png`, `${Pineapple_App}/slide-2.jpg`, `${Pineapple_App}/slide-3.jpg`, `${Pineapple_App}/slide-4.jpg`, `${Pineapple_App}/slide-5.jpg`, `${Pineapple_App}/slide-6.jpg`],
     "Golf Club": [`${Golf_Club}/slide-1.png`, `${Golf_Club}/slide-2.png`, `${Golf_Club}/slide-3.png`, `${Golf_Club}/slide-4.png`, `${Golf_Club}/slide-5.png`, `${Golf_Club}/slide-6.png`, `${Golf_Club}/slide-7.png`, `${Golf_Club}/slide-8.png`, `${Golf_Club}/slide-9.png`, `${Golf_Club}/slide-10.png`],
-    "MA Codeworks": [`${MA_Codeworks}/slide-1.png`, `${MA_Codeworks}/slide-2.png`, `${MA_Codeworks}/slide-3.png`, `${MA_Codeworks}/slide-4.png`, `${MA_Codeworks}/slide-5.png`, `${MA_Codeworks}/slide-6.png`, `${MA_Codeworks}/slide-7.png`, `${MA_Codeworks}/slide-8.png`, `${MA_Codeworks}/slide-9.png`, `${MA_Codeworks}/slide-10.png`]
+    "Library App": [`${Library_App}/slide-1.png`, `${Library_App}/slide-2.png`, `${Library_App}/slide-3.png`, `${Library_App}/slide-4.png`, `${Library_App}/slide-5.png`, `${Library_App}/slide-6.png`, `${Library_App}/slide-7.png`, `${Library_App}/slide-8.png`, `${Library_App}/slide-9.png`, `${Library_App}/slide-10.png`, `${Library_App}/slide-11.png`]
 };
 
 const PROJECTS_descriptions = {
@@ -76,17 +76,18 @@ const PROJECTS_descriptions = {
         "This contact page displays location details, phone numbers, email info, and operating hours for both the golf range and restaurant.",
         "This introduction section outlines the club's mission, values, and facilities, welcoming guests to the Palm Fairway community."
     ],
-    "MA Codeworks": [
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo.",
-        "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellendus, expedita temporibus ipsam nemo molestiae totam quo."
+    "Library App": [
+        "This is the official app icon, featuring a stylized open book logo with a text 'Library Room Reserve' set on a cream background.",
+        "This screen displays the user login interface set against a background image of the Ladislao N. Diwa Memorial Library and Museum.",
+        "This modal enables new users to register an account by providing their name, username, email address, and password.",
+        "This landing page view features a side navigation sidebar alongside a prompt encouraging users to reserve library rooms online.",
+        "This view showcases the available library study rooms, allowing users to browse facilities and select a room to reserve.",
+        "This booking form enables users to schedule a study room reservation by specifying their name, preferred date, room type, and time slot.",
+        "This gallery layout presents detailed preview photos of different available study rooms and seating arrangements.",
+        "This modal displays the user's account profile details, including registered email and username, along with a quick logout option.",
+        "This view provides a personal appointment log where logged-in users can track their past and upcoming room reservations.",
+        "This admin dashboard panel allows administrators to view, manage, edit, or delete recent room reservation schedules.",
+        "This admin management view displays a list of registered system users along with their names and associated email accounts."
     ]
 };
 
