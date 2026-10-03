@@ -445,14 +445,14 @@ export default function PortfolioApp() {
                                 <h2 className="text-(--accent) pt-3 pb-2">{category.title}</h2>
                                 <p className="pb-4 text-[0.9rem]">{category.description}</p>
 
-                                {isEmail && <a href={`mailto:${CONTACTS.email}`} className="bg-(--accent) text-(--cntnr-color) py-3 px-6 text-[0.85rem] font-semibold rounded-lg inline-block transition-colors duration-200 hover:bg-(--accent-hover)">Send an Email</a>}
+                                {isEmail && <a href={`mailto:${category.email}`} className="bg-(--accent) text-(--cntnr-color) py-3 px-6 text-[0.85rem] font-semibold rounded-lg inline-block transition-colors duration-200 hover:bg-(--accent-hover)">Send an Email</a>}
                                 {isPhone && (
                                     <>
                                         <p className="text-(--accent)">{category.phone}</p>
                                         <p className="text-(--txt-muted-color) text-xs">[Note: For urgent matters.]</p>
                                     </>
                                 )}
-                                {isFacebook && <a href="https://www.facebook.com/ayezza.margaux" target="_blank" rel="noopener noreferrer" className="max-w-full text-sm break-all inline-block">[<span className="text-(--accent)">https://www.facebook.com/ayezza.margaux</span>]</a>}
+                                {isFacebook && <a href={category.facebook} target="_blank" rel="noopener noreferrer" className="max-w-full text-sm break-all inline-block">[<span className="text-(--accent)">{category.facebook}</span>]</a>}
                             </div>
                         );
                     })}
